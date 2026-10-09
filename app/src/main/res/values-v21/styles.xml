@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Material Design 1, available from Android 5.0 (API 21). -->
+    <style name="Theme.Zhusheng.Material" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <style name="Theme.Zhusheng.Material.Dark" parent="@android:style/Theme.Material">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+</resources>

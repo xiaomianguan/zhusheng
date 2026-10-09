@@ -1,0 +1,32 @@
+// Top-level build file for the zhusheng project.
+//
+// zhusheng restores system-wide TLS trust on old Android devices (4.0 - 6.0)
+// by downloading official root CA certificates and installing them into the
+// Android certificate stores.
+//
+// Build configuration notes:
+//   * minSdkVersion 14 (Android 4.0 Ice Cream Sandwich)
+//   * targetSdkVersion 23 (Android 6.0 Marshmallow) - the newest version we target
+//   * No AndroidX / Support library is used so the app stays compatible with API 14
+//     and depends on nothing but the platform framework.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

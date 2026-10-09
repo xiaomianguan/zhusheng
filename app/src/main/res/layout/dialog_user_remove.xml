@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The chooser behind "3b. Remove from USER store".
+
+  The user store has no API for removing a certificate, so the three ways out of it
+  differ in who does the deleting and what that needs: root, a person working the
+  certificate list of the settings, or the auto-confirm service working that same list.
+  The three are named here, and the line under them spells out the selected one - it is
+  set by MainActivity#showUserRemoveChooser, because it follows the selection, so this
+  file carries no text of its own beyond the labels.
+
+  The first label is the one thing the chooser does change: on a device without root the
+  first radio is disabled and carries the "noroot" label instead, which says why.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_user_remove_message"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:id="@+id/remove_mode_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/remove_mode_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_mode_root" />
+
+            <RadioButton
+                android:id="@+id/remove_mode_manual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_mode_manual" />
+
+            <RadioButton
+                android:id="@+id/remove_mode_auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_mode_auto" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/remove_mode_note"
+            style="@style/ThemeNote" />
+
+    </LinearLayout>
+
+</ScrollView>

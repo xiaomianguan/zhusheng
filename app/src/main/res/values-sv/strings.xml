@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">Installationsprogram för rotcertifikat för Android 4.0 - 6.0</string>
+
+    <string name="btn_download">1. Hämta markerade</string>
+    <string name="btn_install_system">2a. Installera i systemarkivet (root)</string>
+    <string name="btn_install_user">2b. Installera i användararkivet (utan root)</string>
+    <string name="btn_remove_system">3a. Ta bort från systemarkivet (root)</string>
+    <string name="btn_remove_user">3b. Ta bort från användararkivet</string>
+    <string name="btn_reboot">Starta om nu</string>
+    <string name="btn_select_all">Markera alla</string>
+    <string name="btn_select_recommended">Rekommenderade</string>
+    <string name="btn_select_none">Avmarkera alla</string>
+
+    <string name="status_idle">Klart. Välj de leverantörer du behöver och tryck på ”Hämta markerade”.</string>
+    <string name="status_root_yes">root: tillgänglig</string>
+    <string name="status_root_no">root: inte tillgänglig</string>
+    <string name="device_info_unreadable_roots">%1$d systemrötter kan inte läsas</string>
+    <string name="dialog_unreadable_roots_title">Rötter som appen inte kan läsa</string>
+    <string name="dialog_unreadable_roots_message">%1$d filer i /system/etc/security/cacerts kan inte läsas av en vanlig app. Deras behörigheter är inte de som de förinstallerade rötterna har (0644, ägda av root).\n\nCertifikaten är fortfarande betrodda - det är bara den här appen som inte ser dem. Det får en förvirrande följd: en installation hoppar över roten eftersom filen inte kan läsas, och sedan vägrar certifikatinstallationen lägga till den eftersom roten verkligen redan är betrodd, så körningen avslutas utan att något händer.\n\nDet är ett fel på enheten, inte på en körning. Ett root-skal reparerar det genom att ge filerna samma behörigheter som alla andra rötter:\n\nchmod 644 /system/etc/security/cacerts/&lt;namn&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;namn&gt;\n\nEn installation i systemarkivet med root (2a) skriver sina egna kopior med de behörigheterna.</string>
+
+    <string name="menu_about">Om</string>
+    <string name="menu_website">Projektets webbplats</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">Markera endast rekommenderade</string>
+
+    <!-- Tjänsten för automatisk bekräftelse: menyposten, som öppnar rutan som förklarar
+         tjänsten före inställningssidan där den slås på, och de två texter systemet visar
+         för själva tjänsten i listan över tillgänglighet (se AutoConfirmService). -->
+    <string name="menu_auto_confirm">Bekräfta installationer automatiskt</string>
+    <string name="accessibility_service_label">[zhusheng] Bekräfta certifikatinstallationer automatiskt</string>
+    <string name="accessibility_service_description">Bekräftar Android-certifikatinstallatörens dialoger medan zhusheng installerar certifikat i användararkivet, och går igenom certifikatlistan i inställningarna när den tar bort dem igen. Kräver Android 4.1 eller senare; i Android 4.0 måste frågorna bekräftas för hand. Den är bara aktiv från början till slutet av en sådan körning.</string>
+    <string name="toast_no_accessibility_settings">Inga tillgänglighetsinställningar hittades på den här enheten.</string>
+
+    <string name="about_title">Om zhusheng</string>
+    <string name="about_website_label">Projektets webbplats: %1$s</string>
+    <string name="about_github_label">GitHub: %1$s</string>
+    <string name="about_message">zhusheng hämtar de officiella rotcertifikat som de stora TLS/SSL-leverantörerna publicerar och installerar dem så att äldre Android-enheter (4.0 - 6.0) åter kan verifiera de certifikat som moderna HTTPS-webbplatser använder.\n\nDet finns två installationslägen:\n\n1) Systemarkivet (kräver root): certifikaten kopieras till /system/etc/security/cacerts och blir betrodda av alla appar.\n\n2) Användararkivet (utan root): varje certifikat installeras via Androids certifikatinstallation. I Android-versioner före 7.0 är certifikat i användararkivet betrodda i hela systemet, så det här åtgärdar också HTTPS för alla appar.\n\nEn omstart rekommenderas efter installation i systemarkivet.</string>
+    <string name="about_badge_desc">Märket ”100% slop”</string>
+    <string name="about_badge_note">Appikonen är helt gjord av människor.</string>
+    <string name="about_technical">Version %1$s (%2$d)\nPaket: %3$s\nByggd: %4$s (%5$s)</string>
+
+    <!-- Visas en gång, vid första starten på en enhet med Android 7.0 eller senare (se LegacyNotice). -->
+    <string name="legacy_notice_title">Utformat för Android 4.0 - 6.0</string>
+    <string name="legacy_notice_message">zhusheng är gjord för Android 4.0 till 6.0, och den här enheten kör en nyare version.\n\nAndroid 7.0 ändrade hur systemet hanterar certifikat som installerats av användaren: certifikat i användararkivet är inte längre betrodda av appar som riktar sig mot Android 7.0 eller senare. Att installera i användararkivet (2b) får därför ingen effekt för de flesta appar här.\n\nAtt installera i systemarkivet (2a) kan fortfarande fungera, men det kräver root, och versioner över 6.0 ligger utanför vad zhusheng officiellt stöder. Senare versioner av Android har ändrat det systemcertifikatarkivet ytterligare, så det kan misslyckas.</string>
+    <string name="toast_root_missing">root (su) hittades inte. Använd användararkivet i stället, eller ge rootåtkomst.</string>
+    <string name="toast_nothing_selected">Inga leverantörer valda.</string>
+    <string name="toast_nothing_downloaded">Inget hämtat än. Tryck på ”Hämta markerade” först.</string>
+    <string name="toast_need_download_first">Inga certifikat klara. Hämta först.</string>
+    <string name="toast_no_browser">Hittade ingen app som kan öppna %1$s</string>
+
+    <string name="state_idle">inaktiv</string>
+    <string name="state_downloading">hämtar…</string>
+    <string name="state_ok">%1$d certifikat klara</string>
+    <string name="state_error">fel: %1$s</string>
+    <string name="state_installing">installerar…</string>
+
+    <string name="recommended_tag"> [rekommenderas]</string>
+
+    <string name="menu_theme">Tema</string>
+    <string name="theme_title">Välj tema</string>
+    <string name="theme_message">Material finns på Android 5.0 och senare. Enhetens standard använder temat från enhetens tillverkare.</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Finns inte på Android 4.x (Material kräver Android 5.0 eller senare).</string>
+    <string name="theme_device_default">Enhetens standard</string>
+    <string name="theme_section_theme">Tema</string>
+    <string name="theme_section_scheme">Färgschema</string>
+    <string name="theme_scheme_light">Ljust</string>
+    <string name="theme_scheme_dark">Mörkt</string>
+    <string name="theme_color_primary">Primärfärg</string>
+    <string name="theme_color_accent">Accentfärg</string>
+    <string name="theme_colors_device_default">Enhetens standard använder enhetens egna färger, så inga färgval erbjuds.</string>
+
+    <string name="color_default">Standard</string>
+    <string name="color_red">Röd</string>
+    <string name="color_pink">Rosa</string>
+    <string name="color_purple">Lila</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blå</string>
+    <string name="color_black_white">Svart / vit</string>
+    <string name="color_teal">Turkos</string>
+    <string name="color_green">Grön</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brun</string>
+    <string name="color_blue_grey">Blågrå</string>
+
+    <string name="menu_language">Språk</string>
+    <string name="language_title">Välj språk</string>
+    <string name="language_system">Enhetens standard</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+    <string name="status_download_complete">Hämtningen klar: %1$d certifikat redo att installeras.</string>
+    <string name="toast_downloaded">Hämtade %1$d certifikat.</string>
+    <string name="status_installing_system">Installerar %1$d certifikat i systemarkivet…</string>
+    <string name="status_system_done">Installerade %1$d certifikat i /system/etc/security/cacerts. Starta om för att tillämpa.</string>
+    <string name="status_system_failed">Installationen i systemarkivet rapporterade inte att den lyckades.</string>
+    <string name="dialog_system_output">Utdata från installationen i systemarkivet</string>
+    <string name="output_note_heading">Vad de markerade raderna ovan betyder:</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED — hur många certifikat som kopierades till systemarkivet. Rötter som arkivet redan innehöll lämnades orörda och räknas inte.</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED — hur många certifikatfiler som togs bort. I systemarkivet är det de rötter appen installerade där; i användararkivet är det filerna som innehåller de certifikat du valde. Rotcertifikat som följde med enheten rörs aldrig.</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED — hur många rötter systemarkivet innehöll mer än en gång. De extra kopiorna togs bort och en kopia av varje behölls, så inget certifikat gick förlorat.</string>
+    <string name="output_note_done">ZHUSHENG_DONE — skriptet kördes till slutet. Utan den här raden avbröts skriptet.</string>
+    <string name="output_note_manifest">system-installed.txt — ingen anteckning om att appen installerade något hittades, så det fanns inget den får ta bort.</string>
+    <string name="output_note_no_script">could not write — skriptet kunde inte skrivas till appens egen cachekatalog, så inget kördes alls.</string>
+    <string name="output_note_timeout">command timed out — root-skalet svarade inte i tid. Bevilja root-åtkomst om en fråga väntar och försök igen.</string>
+    <string name="output_note_exec">exec failed — root-skalet kunde inte startas alls. Kontrollera att su fungerar på enheten.</string>
+    <string name="output_note_no_output">Skriptet skrev inte ut någonting alls. Så ser oftast en avvisad root-begäran ut: inget kördes, alltså ändrades inget.</string>
+
+    <!-- Borttagning. 3a tar tillbaka det 2a lade i /system/etc/security/cacerts: bara de
+         filer appen själv har skrivit dit tas bort, så rotcertifikat som följde med
+         enheten blir kvar. 3b gör samma sak med användararkivet, som inte har något API
+         för att ta bort ett certifikat och som utan root inte har någon väg ut alls;
+         valet bakom det namnger de tre sätten (se blocket nedan). -->
+    <string name="dialog_remove_title">Ta bort certifikat?</string>
+    <string name="dialog_remove_system_message">Certifikaten som appen installerade i /system/etc/security/cacerts tas bort igen. Rotcertifikat som följde med enheten lämnas orörda. En rot som arkivet innehåller mer än en gång minskas också till en enda kopia. En omstart rekommenderas efteråt.</string>
+    <string name="dialog_remove_user_message">Certifikaten som appen lade till i användararkivet tas bort igen. Användararkivet har inget API för att ta bort ett certifikat, så det kräver root.</string>
+    <string name="dialog_remove_ok">Ta bort</string>
+    <string name="dialog_remove_system_output">Utdata från borttagningen i systemarkivet</string>
+    <string name="dialog_remove_user_output">Utdata från borttagningen i användararkivet</string>
+    <string name="status_removing_system">Tar bort %1$d certifikat från systemarkivet…</string>
+    <string name="status_removing_user">Tar bort %1$d certifikat från användararkivet…</string>
+    <string name="status_remove_system_done">Tog bort %1$d certifikat från /system/etc/security/cacerts. Starta om för att tillämpa.</string>
+    <string name="status_remove_system_done_deduped">Tog bort %1$d certifikat från /system/etc/security/cacerts och minskade %2$d rötter som arkivet innehöll mer än en gång till en enda kopia. Starta om för att tillämpa.</string>
+    <string name="status_remove_system_deduped_only">Minskade %1$d rötter som arkivet innehöll mer än en gång till en enda kopia. Varje certifikat som var betrott tidigare är fortfarande betrott.</string>
+    <string name="status_remove_user_done">Tog bort %1$d certifikat från användararkivet.</string>
+    <string name="status_remove_nothing">Inget att ta bort: inget av de inlästa certifikaten finns i det arkivet.</string>
+    <string name="status_remove_failed">Borttagningen rapporterade inte framgång.</string>
+    <string name="toast_remove_needs_root">Borttagning kräver root. Utan root tar du bort certifikatet för hand under Inställningar &gt; Säkerhet &gt; Betrodda certifikat.</string>
+
+    <!-- Borttagning utan root, erbjuden som ett av 3b:s tre sätt. Användararkivet kan inte
+         skrivas utan root, så det här leder bara användaren genom certifikatlistan i
+         systeminställningarna och ger en knapp som öppnar den skärmen; bilder kommer senare. -->
+    <string name="dialog_manual_title">Ta bort ett certifikat för hand</string>
+    <string name="dialog_manual_message">Utan root kan ett certifikat i användararkivet bara tas bort i systeminställningarna:\n\n1. Öppna Inställningar, sedan Säkerhet, sedan Betrodda certifikat - knappen nedan tar dig dit.\n2. Byt till fliken ANVÄNDARE.\n3. Tryck på certifikatet du vill ta bort.\n4. Bekräfta med OK eller Ta bort.\n\nCertifikaten som appen installerade listas under namnet på sin CA (till exempel ISRG Root X1). Ordval och ordning skiljer sig lite mellan Android-versioner; en skärmlåsning (PIN, mönster eller lösenord) kan efterfrågas innan ett certifikat kan tas bort.</string>
+    <string name="dialog_manual_open">Öppna inställningar</string>
+    <string name="toast_no_settings_screen">Ingen certifikatlista kunde öppnas på den här enheten. Öppna Inställningar &gt; Säkerhet &gt; Betrodda certifikat själv.</string>
+
+    <!-- Den automatiska varianten av den genomgången: certifikatlistan öppnas och
+         tjänsten för automatisk bekräftelse trycker på de rader som hör till de
+         inlästa certifikaten. Ingen root någonstans, vilket är hela poängen. -->
+    <string name="dialog_auto_remove_title">Ta bort automatiskt?</string>
+    <string name="dialog_auto_remove_message">Certifikatlistan i systeminställningarna öppnas och tjänsten för automatisk bekräftelse tar bort de certifikat som är inlästa här, rad för rad.\n\nDen rör bara rader vars namn matchar ett av dessa certifikat, och den stannar så snart den här skärmen är i förgrunden igen. Du kan ta över för hand när som helst - listan står kvar där den är.</string>
+    <string name="dialog_auto_remove_ok">Ta bort</string>
+    <string name="status_auto_remove">Tar bort %1$d certifikat via inställningsskärmen…</string>
+    <string name="status_auto_remove_done">Automatisk borttagning stoppad. Kontrollera listan om något är kvar.</string>
+
+    <!-- Borttagning från användararkivet (3b) och valet bakom det. Användararkivet har inget
+         API för att ta bort ett certifikat, så de tre sätten skiljer sig i vem som tar bort
+         och i vad det kräver: root, användaren som arbetar i listan i inställningarna eller
+         tjänsten för automatisk bekräftelse som arbetar i samma lista. Det första visas
+         nedtonat på en enhet utan root, vilket dess "noroot"-etikett säger. Valet sparas,
+         så rutan öppnas på sättet som användes senast (se UserRemoveMode). -->
+    <string name="dialog_user_remove_title">Ta bort från användararkivet</string>
+    <string name="dialog_user_remove_message">Användararkivet har inget API för att ta bort ett certifikat, så vad som lämnar det avgörs av vem som tar bort. Välj det sätt den här enheten klarar:</string>
+    <string name="remove_mode_root">Ta bort filerna med root</string>
+    <string name="remove_mode_root_noroot">Ta bort filerna med root (den här enheten har ingen)</string>
+    <string name="remove_mode_root_note">Filerna under /data/misc/user/0/cacerts-added (äldre versioner: /data/misc/keychain/cacerts-added) tas bort direkt. En fil försvinner bara när dess innehåll är ett av certifikaten som är inlästa här. Kräver root.</string>
+    <string name="remove_mode_manual">Ta bort för hand i inställningarna</string>
+    <string name="remove_mode_manual_note">Certifikatlistan i systeminställningarna öppnas och du tar bort varje certifikat själv: tryck på dess rad, tryck Ta bort, bekräfta. Appen tar inte bort något, och det här sättet kräver ingen root.</string>
+    <string name="remove_mode_auto">Ta bort automatiskt (tillgänglighetstjänsten)</string>
+    <string name="remove_mode_auto_note">Samma lista öppnas, men tjänsten för automatisk bekräftelse trycker på raderna för dessa certifikat och bekräftar det som följer, så körningen sköter sig själv. Den måste först slås på i systemets tillgänglighetsinställningar, och den kräver Android 4.1 eller senare.</string>
+    <string name="dialog_user_remove_ok">Fortsätt</string>
+    <!-- Installationen i användararkivet (2b) och valet bakom den. Certifikaten går alltid
+         genom Androids certifikatinstallation; de tre lägena skiljer sig bara i hur många
+         frågor som ställs och vem som svarar på dem, vilket etiketterna namnger och
+         beskrivningen under dem utvecklar. Valet sparas, så rutan öppnas på läget som
+         användes senast (se UserInstallMode). -->
+    <string name="dialog_user_install_title">Installera i användararkivet</string>
+    <string name="dialog_user_install_message">Certifikaten installeras via Androids certifikatinstallation, som begär bekräftelse. Välj hur de frågorna ska gå till:</string>
+    <string name="install_mode_bundle">En fråga för hela uppsättningen</string>
+    <string name="install_mode_bundle_note">Alla certifikat erbjuds installationen på en gång. En del Android 4.x-versioner läser det paketet och struntar i det; appen frågar då om ett certifikat i taget. Du bekräftar frågorna själv.</string>
+    <string name="install_mode_single">En fråga per certifikat</string>
+    <string name="install_mode_single_note">Varje certifikat får en egen ruta, och när du bekräftar en öppnas nästa. Långsammare än det första alternativet, men det beter sig likadant i alla installationer. Du bekräftar frågorna själv.</string>
+    <string name="install_mode_auto">Svara på frågorna automatiskt</string>
+    <string name="install_mode_auto_note">Tjänsten för automatisk bekräftelse trycker OK i varje ruta, så körningen sköter sig själv. Den måste först slås på i systemets tillgänglighetsinställningar, och den kräver Android 4.1 eller senare.</string>
+    <string name="dialog_user_install_ok">Installera</string>
+
+    <!-- Tjänsten för automatisk bekräftelse: rutan som förklarar den före inställningssidan där
+         den slås på, rutan som visas medan den är på, och statusraden för en installation som
+         den svarar i. Posten att leta efter i inställningslistan är accessibility_service_label,
+         som förklaringen citerar. -->
+    <string name="dialog_auto_confirm_title">Tjänsten för automatisk bekräftelse</string>
+    <string name="dialog_auto_confirm_message">zhusheng kan svara på certifikatinstallationens frågor åt dig, men får inte slå på sin egen tillgänglighetstjänst - det kan bara du göra, i systemets tillgänglighetsinställningar.\n\nMedan en installation eller borttagning som appen har startat pågår trycker tjänsten på OK i installationens rutor och, vid en borttagning, på raderna i certifikatlistan i inställningarna. Utanför en sådan körning gör den ingenting alls, och den rör aldrig en ruta som en annan app har öppnat.\n\nPosten som ska slås på heter ”%1$s”.</string>
+    <string name="dialog_auto_confirm_flash_warning">Varning: tjänsten arbetar genom att snabbt trycka sig igenom skärmar, så displayen kan blinka upprepade gånger medan den körs. Om blinkande ljus är ett problem för dig (fotosensitiv epilepsi) kan du i stället använda något av sätten som bekräftar för hand - inget av dem behöver någon tjänst.</string>
+    <string name="dialog_auto_confirm_on_message">Tjänsten för automatisk bekräftelse är på. Den svarar på certifikatinstallationens frågor och arbetar sig genom certifikatlistan i inställningarna medan appen tar bort certifikat ur användararkivet.\n\nSlå av den i systemets tillgänglighetsinställningar om du hellre bekräftar allt själv.</string>
+    <string name="dialog_auto_confirm_open">Öppna tillgänglighetsinställningar</string>
+    <string name="toast_auto_confirm_still_off">Tjänsten för automatisk bekräftelse är fortfarande av, så ingenting startades.</string>
+    <string name="status_installing_user">Installerar %1$d certifikat i användararkivet. Bekräfta varje Android-fråga.</string>
+    <string name="status_installing_user_auto">Installerar %1$d certifikat i användararkivet. Tjänsten svarar på frågorna.</string>
+    <string name="status_user_done">Installationen i användararkivet är klar. På Android &lt; 7.0 är dessa certifikat nu betrodda i hela systemet.</string>
+    <string name="dialog_system_trusted_title">Redan betrott på systemnivå</string>
+    <string name="dialog_system_trusted_message">Android behåller ett certifikat i ett arkiv. Dessa certifikat finns redan i systemarkivet på den här enheten, så certifikatinstallationen rapporterar att den lyckades och lägger inte till något i användararkivet:\n\n%1$s\n\nInget är trasigt och inget har gått förlorat - de är redan betrodda av alla appar. Ta bort dem från systemarkivet först (3a) och installera dem igen (2b) om du vill se dem i användararkivet.</string>
+    <string name="status_user_nothing_system_trusted">Inget att installera: %1$d certifikat är redan betrodda på systemnivå, och Android behåller ingen andra kopia i användararkivet.</string>
+    <string name="status_user_done_system_trusted">Installationen i användararkivet är klar. %1$d certifikat hoppades över eftersom de redan är betrodda på systemnivå, vilket Android inte kopierar till användararkivet.</string>
+    <string name="toast_rebooting">Startar om…</string>
+
+    <!-- Certifikatkällorna i CertCatalog: leverantörens namn på radens första rad och noten under dess URL. -->
+    <string name="src_mozilla_name">Mozilla CA Bundle (alla stora CA)</string>
+    <string name="src_goog_bundle_name">Google Trust Services (paket)</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt - ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt - ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google - GTS Root R1</string>
+    <string name="src_gts_r2_name">Google - GTS Root R2</string>
+    <string name="src_gts_r3_name">Google - GTS Root R3</string>
+    <string name="src_gts_r4_name">Google - GTS Root R4</string>
+    <string name="src_amazon_r1_name">Amazon Root CA 1</string>
+    <string name="src_amazon_r2_name">Amazon Root CA 2</string>
+    <string name="src_amazon_r3_name">Amazon Root CA 3</string>
+    <string name="src_amazon_r4_name">Amazon Root CA 4</string>
+    <string name="src_digicert_global_name">DigiCert Global Root CA</string>
+    <string name="src_digicert_g2_name">DigiCert Global Root G2</string>
+    <string name="src_digicert_g3_name">DigiCert Global Root G3</string>
+    <string name="src_digicert_g4_name">DigiCert Trusted Root G4</string>
+    <string name="src_digicert_ev_name">DigiCert High Assurance EV Root CA</string>
+    <string name="src_globalsign_r1_name">GlobalSign Root CA (R1)</string>
+    <string name="src_globalsign_r3_name">GlobalSign Root CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign Root CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo - USERTrust RSA Certification Authority</string>
+    <string name="src_comodo_rsa_name">Sectigo - COMODO RSA Certification Authority</string>
+    <string name="src_comodo_ecc_name">Sectigo - COMODO ECC Certification Authority</string>
+    <string name="src_entrust_g2_name">Entrust Root Certification Authority - G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy Root Certificate Authority - G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA Root Certificate Authority 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC Root Certificate Authority 2017</string>
+    <string name="src_mozilla_note">Komplett Mozilla NSS-förtroendepaket. En hämtning täcker alla stora CA.</string>
+    <string name="src_goog_bundle_note">Alla nuvarande rötter från Google Trust Services (GTS Root R1-R4 med flera).</string>
+    <string name="src_isrg_x1_note">Signerar de allra flesta Let\'s Encrypt-certifikat (RSA).</string>
+    <string name="src_isrg_x2_note">ECDSA-rot som används av nyare Let\'s Encrypt-certifikat.</string>
+    <string name="src_gts_r1_note">Rot från Google Trust Services R1 (RSA 4096).</string>
+    <string name="src_gts_r2_note">Rot från Google Trust Services R2 (RSA 4096).</string>
+    <string name="src_gts_r3_note">Rot från Google Trust Services R3 (ECDSA P-384).</string>
+    <string name="src_gts_r4_note">Rot från Google Trust Services R4 (ECDSA P-384).</string>
+    <string name="src_amazon_r1_note">Rot från Amazon Trust Services CA 1 (RSA 2048).</string>
+    <string name="src_amazon_r2_note">Rot från Amazon Trust Services CA 2 (RSA 4096).</string>
+    <string name="src_amazon_r3_note">Rot från Amazon Trust Services CA 3 (ECDSA P-256).</string>
+    <string name="src_amazon_r4_note">Rot från Amazon Trust Services CA 4 (ECDSA P-384).</string>
+    <string name="src_digicert_global_note">DigiCerts äldre (legacy) globala rot.</string>
+    <string name="src_digicert_g2_note">DigiCerts modernare globala rot G2.</string>
+    <string name="src_digicert_g3_note">DigiCerts globala rot G3 (ECDSA P-384).</string>
+    <string name="src_digicert_g4_note">DigiCerts betrodda rot G4.</string>
+    <string name="src_digicert_ev_note">DigiCerts rot med hög tillförlitlighet (EV).</string>
+    <string name="src_globalsign_r1_note">GlobalSigns ursprungliga rot.</string>
+    <string name="src_globalsign_r3_note">GlobalSigns rot R3 (RSA 2048).</string>
+    <string name="src_globalsign_r6_note">GlobalSigns rot R6 (RSA 4096).</string>
+    <string name="src_usertrust_rsa_note">USERTrust RSA-rot (Sectigo, tidigare Comodo).</string>
+    <string name="src_comodo_rsa_note">COMODO RSA-rot.</string>
+    <string name="src_comodo_ecc_note">COMODO ECC-rot.</string>
+    <string name="src_entrust_g2_note">Entrust-rot G2 (RSA 2048).</string>
+    <string name="src_godaddy_g2_note">GoDaddy-rot G2 (RSA 2048).</string>
+    <string name="src_ms_rsa_2017_note">Microsoft RSA-rot 2017.</string>
+    <string name="src_ms_ecc_2017_note">Microsoft ECC-rot 2017.</string>
+</resources>

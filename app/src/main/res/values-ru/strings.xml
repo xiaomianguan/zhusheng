@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">Установщик корневых сертификатов для Android 4.0 - 6.0</string>
+
+    <string name="btn_download">1. Скачать выбранные</string>
+    <string name="btn_install_system">2a. Установить в системное хранилище (root)</string>
+    <string name="btn_install_user">2b. Установить в пользовательское хранилище (без root)</string>
+    <string name="btn_remove_system">3a. Удалить из системного хранилища (root)</string>
+    <string name="btn_remove_user">3b. Удалить из пользовательского хранилища</string>
+    <string name="btn_reboot">Перезагрузить сейчас</string>
+    <string name="btn_select_all">Выбрать все</string>
+    <string name="btn_select_recommended">Рекомендуемые</string>
+    <string name="btn_select_none">Снять выбор</string>
+
+    <string name="status_idle">Готово. Выберите нужных поставщиков и нажмите «Скачать выбранные».</string>
+    <string name="status_root_yes">root: доступен</string>
+    <string name="status_root_no">root: недоступен</string>
+    <string name="device_info_unreadable_roots">%1$d системных корневых сертификатов не читается</string>
+    <string name="dialog_unreadable_roots_title">Корневые сертификаты, которые это приложение не может прочитать</string>
+    <string name="dialog_unreadable_roots_message">%1$d файлов в /system/etc/security/cacerts не может прочитать обычное приложение. Их права не такие, как у предустановленных корневых сертификатов (0644, владелец root).\n\nСертификаты по-прежнему доверенные - их не видит только это приложение. Отсюда путаный результат: установка пропускает корневой сертификат, потому что файл не читается, а затем установщик сертификатов отказывается его добавлять, потому что он действительно уже доверенный, и запуск заканчивается без всякого эффекта.\n\nЭто неисправность устройства, а не запуска. Оболочка root исправляет её, выдав этим файлам права, как у всех остальных корневых сертификатов:\n\nchmod 644 /system/etc/security/cacerts/&lt;имя&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;имя&gt;\n\nУстановка в системное хранилище с root (2a) записывает свои копии с такими правами.</string>
+
+    <string name="menu_about">О программе</string>
+    <string name="menu_website">Сайт проекта</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">Только рекомендуемые</string>
+
+    <!-- Служба автоподтверждения: пункт меню, который открывает окно с объяснением службы
+         перед страницей настроек, где её включают, и две строки, которые система
+         показывает для самой службы в списке специальных возможностей
+         (см. AutoConfirmService). -->
+    <string name="menu_auto_confirm">Автоподтверждение установки</string>
+    <string name="accessibility_service_label">[zhusheng] Автоподтверждение установки сертификатов</string>
+    <string name="accessibility_service_description">Подтверждает окна установщика сертификатов Android, пока zhusheng устанавливает сертификаты в пользовательское хранилище, и проходит по списку сертификатов в настройках, когда удаляет их оттуда. Требуется Android 4.1 или новее; в Android 4.0 запросы нужно подтверждать вручную. Работает только от начала до конца такого прохода.</string>
+    <string name="toast_no_accessibility_settings">На этом устройстве не найдены настройки специальных возможностей.</string>
+
+    <string name="about_title">О программе zhusheng</string>
+    <string name="about_website_label">Сайт проекта: %1$s</string>
+    <string name="about_github_label">GitHub: %1$s</string>
+    <string name="about_message">zhusheng загружает официальные корневые сертификаты, публикуемые крупнейшими поставщиками TLS/SSL, и устанавливает их, чтобы старые устройства на Android (4.0 - 6.0) снова могли проверять сертификаты современных сайтов HTTPS.\n\nДоступны два режима установки:\n\n1) Системное хранилище (нужен root): сертификаты копируются в /system/etc/security/cacerts и становятся доверенными для всех приложений.\n\n2) Пользовательское хранилище (без root): каждый сертификат устанавливается через системный установщик сертификатов Android. В версиях Android ниже 7.0 сертификаты в пользовательском хранилище считаются доверенными в масштабе всей системы, поэтому это тоже исправляет HTTPS для всех приложений.\n\nПосле установки в системное хранилище рекомендуется перезагрузить устройство.</string>
+    <string name="about_badge_desc">Значок «100% slop»</string>
+    <string name="about_badge_note">Значок приложения полностью сделан человеком.</string>
+    <string name="about_technical">Версия %1$s (%2$d)\nПакет: %3$s\nСборка: %4$s (%5$s)</string>
+
+    <!-- Показывается один раз при первом запуске на устройстве с Android 7.0 или новее (см. LegacyNotice). -->
+    <string name="legacy_notice_title">Программа рассчитана на Android 4.0 - 6.0</string>
+    <string name="legacy_notice_message">zhusheng рассчитан на Android 4.0 - 6.0, а на этом устройстве установлена более новая версия.\n\nВ Android 7.0 изменился порядок работы с сертификатами, установленными пользователем: сертификаты в пользовательском хранилище больше не считаются доверенными для приложений, ориентированных на Android 7.0 и новее. Поэтому установка в пользовательское хранилище (2b) здесь не даст эффекта для большинства приложений.\n\nУстановка в системное хранилище (2a) может ещё работать, но для неё нужен root, а версии выше 6.0 выходят за рамки официально поддерживаемых zhusheng. Последующие выпуски Android ещё сильнее изменили системное хранилище сертификатов, поэтому она может не удаться.</string>
+    <string name="toast_root_missing">root (su) не найден. Воспользуйтесь режимом пользовательского хранилища или предоставьте права root.</string>
+    <string name="toast_nothing_selected">Поставщики не выбраны.</string>
+    <string name="toast_nothing_downloaded">Пока ничего не загружено. Сначала нажмите «Скачать выбранные».</string>
+    <string name="toast_need_download_first">Нет готовых сертификатов. Сначала скачайте.</string>
+    <string name="toast_no_browser">Не найдено приложение для открытия %1$s</string>
+
+    <string name="state_idle">ожидание</string>
+    <string name="state_downloading">загрузка…</string>
+    <string name="state_ok">готово сертификатов: %1$d</string>
+    <string name="state_error">ошибка: %1$s</string>
+    <string name="state_installing">установка…</string>
+
+    <string name="recommended_tag"> [рекомендуется]</string>
+
+    <string name="menu_theme">Тема</string>
+    <string name="theme_title">Выбор темы</string>
+    <string name="theme_message">Material доступна на Android 5.0 и новее. Системная тема использует оформление производителя устройства.</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Недоступно на Android 4.x (Material требует Android 5.0 или новее).</string>
+    <string name="theme_device_default">Системная</string>
+    <string name="theme_section_theme">Тема</string>
+    <string name="theme_section_scheme">Цветовая схема</string>
+    <string name="theme_scheme_light">Светлая</string>
+    <string name="theme_scheme_dark">Тёмная</string>
+    <string name="theme_color_primary">Основной цвет</string>
+    <string name="theme_color_accent">Акцентный цвет</string>
+    <string name="theme_colors_device_default">Системная тема использует цвета устройства, поэтому выбор цветов не предлагается.</string>
+
+    <string name="color_default">По умолчанию</string>
+    <string name="color_red">Красный</string>
+    <string name="color_pink">Розовый</string>
+    <string name="color_purple">Фиолетовый</string>
+    <string name="color_indigo">Индиго</string>
+    <string name="color_blue">Синий</string>
+    <string name="color_black_white">Чёрный / белый</string>
+    <string name="color_teal">Бирюзовый</string>
+    <string name="color_green">Зелёный</string>
+    <string name="color_orange">Оранжевый</string>
+    <string name="color_brown">Коричневый</string>
+    <string name="color_blue_grey">Серо-голубой</string>
+
+    <string name="menu_language">Язык</string>
+    <string name="language_title">Выбор языка</string>
+    <string name="language_system">Как в системе</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+    <string name="status_download_complete">Загрузка завершена: %1$d сертификатов готовы к установке.</string>
+    <string name="toast_downloaded">Загружено сертификатов: %1$d.</string>
+    <string name="status_installing_system">Установка %1$d сертификатов в системное хранилище…</string>
+    <string name="status_system_done">Установлено %1$d сертификатов в /system/etc/security/cacerts. Перезагрузите устройство, чтобы применить изменения.</string>
+    <string name="status_system_failed">Установка в системное хранилище не сообщила об успехе.</string>
+    <string name="dialog_system_output">Вывод установки в системное хранилище</string>
+    <string name="output_note_heading">Что означают отмеченные строки выше:</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED — сколько сертификатов скопировано в системное хранилище. Корневые сертификаты, которые там уже были, пропущены и не считаются.</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED — сколько файлов сертификатов удалено. В системном хранилище это корневые сертификаты, которые приложение туда установило; в пользовательском хранилище это файлы с выбранными вами сертификатами. Корневые сертификаты, поставленные с устройством, не трогаются никогда.</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED — сколько корневых сертификатов системное хранилище содержало более одного раза. Лишние копии удалены, по одной копии каждого сохранено, поэтому ни один сертификат не потерян.</string>
+    <string name="output_note_done">ZHUSHENG_DONE — скрипт дошёл до конца. Без этой строки скрипт был прерван.</string>
+    <string name="output_note_manifest">system-installed.txt — запись об установке этим приложением не найдена, поэтому удалять нечего.</string>
+    <string name="output_note_no_script">could not write — скрипт не удалось записать в собственный кэш-каталог приложения, поэтому ничего не выполнялось.</string>
+    <string name="output_note_timeout">command timed out — оболочка root не ответила вовремя. Если ждёт запрос на доступ, предоставьте его и повторите.</string>
+    <string name="output_note_exec">exec failed — оболочку root вообще не удалось запустить. Проверьте, работает ли su на этом устройстве.</string>
+    <string name="output_note_no_output">Скрипт не вывел ничего. Обычно так выглядит отклонённый запрос root: ничего не выполнялось, значит ничего и не изменилось.</string>
+
+    <!-- Удаление. 3a отменяет то, что 2a положило в /system/etc/security/cacerts: удаляются
+         только файлы, записанные этим приложением, поэтому корневые сертификаты,
+         поставленные с устройством, остаются. 3b делает то же для пользовательского
+         хранилища, в котором нет API для удаления сертификата и из которого без root
+         вообще нет выхода; выбор за ним называет три способа (см. блок ниже). -->
+    <string name="dialog_remove_title">Удалить сертификаты?</string>
+    <string name="dialog_remove_system_message">Сертификаты, установленные этим приложением в /system/etc/security/cacerts, будут удалены. Корневые сертификаты, поставленные с устройством, останутся на месте. Корневой сертификат, который хранится больше одного раза, также будет сведён к одной копии. После этого рекомендуется перезагрузка.</string>
+    <string name="dialog_remove_user_message">Сертификаты, добавленные этим приложением в пользовательское хранилище, будут удалены. В пользовательском хранилище нет API для удаления сертификата, поэтому нужен root.</string>
+    <string name="dialog_remove_ok">Удалить</string>
+    <string name="dialog_remove_system_output">Вывод удаления из системного хранилища</string>
+    <string name="dialog_remove_user_output">Вывод удаления из пользовательского хранилища</string>
+    <string name="status_removing_system">Удаление %1$d сертификатов из системного хранилища…</string>
+    <string name="status_removing_user">Удаление %1$d сертификатов из пользовательского хранилища…</string>
+    <string name="status_remove_system_done">Удалено %1$d сертификатов из /system/etc/security/cacerts. Перезагрузите устройство, чтобы применить изменения.</string>
+    <string name="status_remove_system_done_deduped">Удалено %1$d сертификатов из /system/etc/security/cacerts, а %2$d корневых сертификатов, хранившихся более одного раза, сведены к одной копии. Перезагрузите устройство, чтобы применить изменения.</string>
+    <string name="status_remove_system_deduped_only">%1$d корневых сертификатов, хранившихся более одного раза, сведены к одной копии. Все сертификаты, которым доверяли раньше, по-прежнему доверенные.</string>
+    <string name="status_remove_user_done">Удалено %1$d сертификатов из пользовательского хранилища.</string>
+    <string name="status_remove_nothing">Удалять нечего: ни одного из загруженных сертификатов нет в этом хранилище.</string>
+    <string name="status_remove_failed">Удаление не сообщило об успехе.</string>
+    <string name="toast_remove_needs_root">Для удаления нужен root. Без него удалите сертификат вручную: Настройки &gt; Безопасность &gt; Доверенные сертификаты.</string>
+
+    <!-- Удаление без root, предлагаемое как один из трёх способов 3b. Пользовательское
+         хранилище нельзя записать без root, поэтому это лишь проводит пользователя по
+         списку сертификатов в системных настройках и даёт кнопку для перехода на этот
+         экран; картинки позже. -->
+    <string name="dialog_manual_title">Удаление сертификата вручную</string>
+    <string name="dialog_manual_message">Без root сертификат из пользовательского хранилища можно удалить только в настройках системы:\n\n1. Откройте «Настройки», затем «Безопасность», затем «Доверенные сертификаты» — кнопка ниже сразу туда переносит.\n2. Перейдите на вкладку «Пользователь».\n3. Коснитесь сертификата, который нужно удалить.\n4. Подтвердите кнопкой «OK» или «Удалить».\n\nСертификаты, установленные этим приложением, перечислены под именем своего CA (например, ISRG Root X1). Формулировки и порядок немного различаются между версиями Android; перед удалением может быть запрошена блокировка экрана (PIN, графический ключ или пароль).</string>
+    <string name="dialog_manual_open">Открыть настройки</string>
+    <string name="toast_no_settings_screen">Не удалось открыть список сертификатов на этом устройстве. Откройте «Настройки &gt; Безопасность &gt; Доверенные сертификаты» сами.</string>
+
+    <!-- Автоматическая версия этого руководства: открывается список сертификатов, а служба
+         автоподтверждения нажимает на строки, принадлежащие загруженным сертификатам.
+         Root нигде не нужен, в этом и смысл. -->
+    <string name="dialog_auto_remove_title">Удалить автоматически?</string>
+    <string name="dialog_auto_remove_message">Откроется список сертификатов в системных настройках, и служба автоподтверждения удалит из него загруженные здесь сертификаты, строку за строкой.\n\nОна касается только строк, имя которых совпадает с одним из этих сертификатов, и останавливается, как только этот экран снова окажется впереди. Вы можете в любой момент взяться за дело вручную — список остаётся на месте.</string>
+    <string name="dialog_auto_remove_ok">Удалить</string>
+    <string name="status_auto_remove">Удаление %1$d сертификатов через экран настроек…</string>
+    <string name="status_auto_remove_done">Автоматическое удаление остановлено. Проверьте список, если что-то осталось.</string>
+
+    <!-- Удаление из пользовательского хранилища (3b) и выбор за ним. В пользовательском
+         хранилище нет API для удаления сертификата, поэтому три способа различаются тем,
+         кто удаляет, и тем, что для этого нужно: root, пользователь за списком
+         в настройках или служба автоматического подтверждения за тем же списком. Первый
+         на устройстве без root показан серым, о чём и говорит его метка "noroot". Выбор
+         запоминается, поэтому окно открывается на последнем использованном способе
+         (см. UserRemoveMode). -->
+    <string name="dialog_user_remove_title">Удаление из пользовательского хранилища</string>
+    <string name="dialog_user_remove_message">В пользовательском хранилище нет API для удаления сертификата, поэтому то, что из него уйдёт, зависит от того, кто удаляет. Выберите способ, доступный на этом устройстве:</string>
+    <string name="remove_mode_root">Удалить файлы с помощью root</string>
+    <string name="remove_mode_root_noroot">Удалить файлы с помощью root (на этом устройстве его нет)</string>
+    <string name="remove_mode_root_note">Файлы в /data/misc/user/0/cacerts-added (в старых версиях: /data/misc/keychain/cacerts-added) удаляются напрямую. Файл удаляется только тогда, когда его содержимое — один из загруженных здесь сертификатов. Нужен root.</string>
+    <string name="remove_mode_manual">Удалить вручную в настройках</string>
+    <string name="remove_mode_manual_note">Открывается список сертификатов в системных настройках, и вы удаляете каждый сертификат сами: нажмите его строку, затем «Удалить», затем подтвердите. Приложение ничего не удаляет, и этот способ не требует root.</string>
+    <string name="remove_mode_auto">Удалить автоматически (служба спец. возможностей)</string>
+    <string name="remove_mode_auto_note">Открывается тот же список, но служба автоматического подтверждения нажимает строки этих сертификатов и подтверждает то, что за этим следует, так что участие не требуется. Сначала её нужно включить в системных настройках специальных возможностей; нужен Android 4.1 или новее.</string>
+    <string name="dialog_user_remove_ok">Продолжить</string>
+    <!-- Установка в пользовательское хранилище (2b) и выбор, который за ней стоит. Сертификаты
+         в любом случае проходят через установщик сертификатов Android; три режима различаются
+         только числом запросов и тем, кто на них отвечает, - это и называют пункты, а пояснение
+         под ними раскрывает. Выбор запоминается, поэтому окно открывается на последнем
+         использованном режиме (см. UserInstallMode). -->
+    <string name="dialog_user_install_title">Установка в пользовательское хранилище</string>
+    <string name="dialog_user_install_message">Сертификаты устанавливаются через установщик сертификатов Android, который запрашивает подтверждение. Выберите, как должны проходить эти запросы:</string>
+    <string name="install_mode_bundle">Один запрос на весь набор</string>
+    <string name="install_mode_bundle_note">Все сертификаты передаются установщику сразу. Часть сборок Android 4.x читает этот набор и игнорирует его; тогда приложение запрашивает сертификаты по одному. Запросы подтверждаете вы сами.</string>
+    <string name="install_mode_single">Один запрос на сертификат</string>
+    <string name="install_mode_single_note">У каждого сертификата своё окно, и подтверждение одного открывает следующее. Медленнее первого варианта, но ведёт себя одинаково в любом установщике. Запросы подтверждаете вы сами.</string>
+    <string name="install_mode_auto">Подтверждать запросы автоматически</string>
+    <string name="install_mode_auto_note">Служба автоподтверждения нажимает OK в каждом окне, поэтому установка не требует внимания. Сначала её нужно включить в системных настройках специальных возможностей; требуется Android 4.1 или новее.</string>
+    <string name="dialog_user_install_ok">Установить</string>
+
+    <!-- Служба автоподтверждения: окно, объясняющее её перед страницей настроек, где её
+         включают, окно, показываемое при включённой службе, и строка состояния установки,
+         которую она ведёт. Пункт, который нужно найти в списке настроек, - это
+         accessibility_service_label, на неё и ссылается объяснение. -->
+    <string name="dialog_auto_confirm_title">Служба автоподтверждения</string>
+    <string name="dialog_auto_confirm_message">zhusheng может подтверждать за вас запросы установщика сертификатов, но включить собственную службу специальных возможностей ему нельзя - это делаете только вы, в системных настройках специальных возможностей.\n\nПока идёт установка или удаление, начатые этим приложением, служба нажимает кнопку OK в окнах установщика, а при удалении - строки списка сертификатов в настройках. Вне такого прогона она не делает ничего и никогда не трогает окно, открытое другим приложением.\n\nПункт для включения называется «%1$s».</string>
+    <string name="dialog_auto_confirm_flash_warning">Предупреждение: служба работает, быстро проходя один экран за другим, поэтому во время её работы экран может многократно мигать. Если мигающий свет для вас проблематичен (фоточувствительная эпилепсия), выберите один из способов подтверждения вручную - ни одному из них служба не нужна.</string>
+    <string name="dialog_auto_confirm_on_message">Служба автоподтверждения включена. Она подтверждает запросы установщика сертификатов и проходит список сертификатов в настройках, пока это приложение удаляет сертификаты из пользовательского хранилища.\n\nОтключите её в системных настройках специальных возможностей, если предпочитаете подтверждать всё сами.</string>
+    <string name="dialog_auto_confirm_open">Открыть специальные возможности</string>
+    <string name="toast_auto_confirm_still_off">Служба автоподтверждения всё ещё выключена, поэтому ничего не запущено.</string>
+    <string name="status_installing_user">Установка %1$d сертификатов в пользовательское хранилище. Подтвердите каждый запрос Android.</string>
+    <string name="status_installing_user_auto">Установка %1$d сертификатов в пользовательское хранилище. Запросы подтверждает служба.</string>
+    <string name="status_user_done">Установка в пользовательское хранилище завершена. На Android &lt; 7.0 эти сертификаты теперь доверенные в масштабе всей системы.</string>
+    <string name="dialog_system_trusted_title">Уже доверенный на уровне системы</string>
+    <string name="dialog_system_trusted_message">Android хранит сертификат только в одном хранилище. Эти сертификаты уже находятся в системном хранилище этого устройства, поэтому установщик сертификатов сообщает об успехе и ничего не добавляет в пользовательское хранилище:\n\n%1$s\n\nНичего не сломано и ничего не потеряно - они уже доверенные во всех приложениях. Чтобы увидеть их в пользовательском хранилище, сначала удалите их из системного хранилища (3a) и установите заново (2b).</string>
+    <string name="status_user_nothing_system_trusted">Нечего устанавливать: %1$d сертификатов уже доверенные на уровне системы, а Android не создаёт вторую копию в пользовательском хранилище.</string>
+    <string name="status_user_done_system_trusted">Установка в пользовательское хранилище завершена. Пропущено %1$d сертификатов: они уже доверенные на уровне системы, и Android не копирует их в пользовательское хранилище.</string>
+    <string name="toast_rebooting">Перезагрузка…</string>
+
+    <!-- Источники сертификатов из CertCatalog: название поставщика в первой строке записи и примечание под её URL. -->
+    <string name="src_mozilla_name">Mozilla CA Bundle (все основные CA)</string>
+    <string name="src_goog_bundle_name">Google Trust Services (пакет)</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt - ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt - ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google - GTS Root R1</string>
+    <string name="src_gts_r2_name">Google - GTS Root R2</string>
+    <string name="src_gts_r3_name">Google - GTS Root R3</string>
+    <string name="src_gts_r4_name">Google - GTS Root R4</string>
+    <string name="src_amazon_r1_name">Amazon Root CA 1</string>
+    <string name="src_amazon_r2_name">Amazon Root CA 2</string>
+    <string name="src_amazon_r3_name">Amazon Root CA 3</string>
+    <string name="src_amazon_r4_name">Amazon Root CA 4</string>
+    <string name="src_digicert_global_name">DigiCert Global Root CA</string>
+    <string name="src_digicert_g2_name">DigiCert Global Root G2</string>
+    <string name="src_digicert_g3_name">DigiCert Global Root G3</string>
+    <string name="src_digicert_g4_name">DigiCert Trusted Root G4</string>
+    <string name="src_digicert_ev_name">DigiCert High Assurance EV Root CA</string>
+    <string name="src_globalsign_r1_name">GlobalSign Root CA (R1)</string>
+    <string name="src_globalsign_r3_name">GlobalSign Root CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign Root CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo - USERTrust RSA Certification Authority</string>
+    <string name="src_comodo_rsa_name">Sectigo - COMODO RSA Certification Authority</string>
+    <string name="src_comodo_ecc_name">Sectigo - COMODO ECC Certification Authority</string>
+    <string name="src_entrust_g2_name">Entrust Root Certification Authority - G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy Root Certificate Authority - G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA Root Certificate Authority 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC Root Certificate Authority 2017</string>
+    <string name="src_mozilla_note">Полный набор доверия Mozilla NSS. Одна загрузка закрывает все основные CA.</string>
+    <string name="src_goog_bundle_note">Все действующие корневые сертификаты Google Trust Services (GTS Root R1-R4 и другие).</string>
+    <string name="src_isrg_x1_note">Подписывает подавляющее большинство сертификатов Let\'s Encrypt (RSA).</string>
+    <string name="src_isrg_x2_note">Корень ECDSA, используемый новыми сертификатами Let\'s Encrypt.</string>
+    <string name="src_gts_r1_note">Корень Google Trust Services R1 (RSA 4096).</string>
+    <string name="src_gts_r2_note">Корень Google Trust Services R2 (RSA 4096).</string>
+    <string name="src_gts_r3_note">Корень Google Trust Services R3 (ECDSA P-384).</string>
+    <string name="src_gts_r4_note">Корень Google Trust Services R4 (ECDSA P-384).</string>
+    <string name="src_amazon_r1_note">Корень Amazon Trust Services CA 1 (RSA 2048).</string>
+    <string name="src_amazon_r2_note">Корень Amazon Trust Services CA 2 (RSA 4096).</string>
+    <string name="src_amazon_r3_note">Корень Amazon Trust Services CA 3 (ECDSA P-256).</string>
+    <string name="src_amazon_r4_note">Корень Amazon Trust Services CA 4 (ECDSA P-384).</string>
+    <string name="src_digicert_global_note">Старый (legacy) глобальный корень DigiCert.</string>
+    <string name="src_digicert_g2_note">Современный глобальный корень DigiCert G2.</string>
+    <string name="src_digicert_g3_note">Глобальный корень DigiCert G3 (ECDSA P-384).</string>
+    <string name="src_digicert_g4_note">Доверенный корень DigiCert G4.</string>
+    <string name="src_digicert_ev_note">Корень DigiCert с высокой степенью доверия (EV).</string>
+    <string name="src_globalsign_r1_note">Первый корневой сертификат GlobalSign.</string>
+    <string name="src_globalsign_r3_note">Корень GlobalSign R3 (RSA 2048).</string>
+    <string name="src_globalsign_r6_note">Корень GlobalSign R6 (RSA 4096).</string>
+    <string name="src_usertrust_rsa_note">Корень USERTrust RSA (Sectigo, ранее Comodo).</string>
+    <string name="src_comodo_rsa_note">Корень COMODO RSA.</string>
+    <string name="src_comodo_ecc_note">Корень COMODO ECC.</string>
+    <string name="src_entrust_g2_note">Корень Entrust G2 (RSA 2048).</string>
+    <string name="src_godaddy_g2_note">Корень GoDaddy G2 (RSA 2048).</string>
+    <string name="src_ms_rsa_2017_note">Корень Microsoft RSA 2017.</string>
+    <string name="src_ms_ecc_2017_note">Корень Microsoft ECC 2017.</string>
+</resources>

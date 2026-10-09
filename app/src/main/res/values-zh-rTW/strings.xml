@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">適用於 Android 4.0 - 6.0 的根憑證安裝工具</string>
+
+    <string name="btn_download">1. 下載所選項目</string>
+    <string name="btn_install_system">2a. 安裝到系統憑證儲存區（需 root）</string>
+    <string name="btn_install_user">2b. 安裝到使用者憑證儲存區（免 root）</string>
+    <string name="btn_remove_system">3a. 從系統憑證儲存區移除（需 root）</string>
+    <string name="btn_remove_user">3b. 從使用者憑證儲存區移除</string>
+    <string name="btn_reboot">立即重新啟動</string>
+    <string name="btn_select_all">全選</string>
+    <string name="btn_select_recommended">建議</string>
+    <string name="btn_select_none">取消全選</string>
+
+    <string name="status_idle">就緒。選擇需要的憑證授權單位，然後點選「下載所選項目」。</string>
+    <string name="status_root_yes">root：可用</string>
+    <string name="status_root_no">root：不可用</string>
+    <string name="device_info_unreadable_roots">%1$d 個系統根憑證無法讀取</string>
+    <string name="dialog_unreadable_roots_title">本應用程式無法讀取的根憑證</string>
+    <string name="dialog_unreadable_roots_message">/system/etc/security/cacerts 中有 %1$d 個檔案是普通應用程式無法讀取的。它們的權限與預裝根憑證不同（預裝根憑證為 0644，擁有者 root）。\n\n這些憑證仍然受信任——只是本應用程式看不到它們。由此會產生令人困惑的結果：安裝時因檔案無法讀取而略過該根憑證，隨後憑證安裝程式又因該根憑證確實已受信任而拒絕加入，於是整個流程結束時什麼都沒發生。\n\n這是裝置的問題，而不是某次操作的問題。以 root 權限執行以下指令，把這些檔案改成與其他根憑證相同的權限即可修復：\n\nchmod 644 /system/etc/security/cacerts/&lt;名稱&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;名稱&gt;\n\n以 root 安裝到系統憑證儲存區（2a）時，寫入的副本就帶有這些權限。</string>
+
+    <string name="menu_about">關於</string>
+    <string name="menu_website">專案網站</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">僅選擇建議項目</string>
+
+    <!-- 自動確認服務：先說明該服務、再開啟啟用它的設定頁面的選單項目，以及系統在「無障礙」
+         清單中為該服務顯示的兩段文字（參見 AutoConfirmService）。 -->
+    <string name="menu_auto_confirm">自動確認安裝</string>
+    <string name="accessibility_service_label">[zhusheng] 自動確認憑證安裝</string>
+    <string name="accessibility_service_description">在 zhusheng 將憑證安裝到使用者憑證儲存區時，自動確認 Android 憑證安裝程式的對話方塊；在移除這些憑證時，它會代為點選系統設定中的憑證清單。需要 Android 4.1 或更新版本；在 Android 4.0 上必須手動確認提示。僅在這樣一次操作的開始到結束之間生效。</string>
+    <string name="toast_no_accessibility_settings">此裝置上沒有無障礙設定。</string>
+
+    <string name="about_title">關於 zhusheng</string>
+    <string name="about_website_label">專案網站：%1$s</string>
+    <string name="about_github_label">GitHub：%1$s</string>
+    <string name="about_message">zhusheng 會下載各大 TLS/SSL 供應商官方發佈的根憑證並安裝到 Android 憑證儲存區中，讓較舊的 Android 裝置（4.0 - 6.0）能夠重新驗證現代 HTTPS 網站所使用的憑證。\n\n提供兩種安裝方式：\n\n1) 系統憑證儲存區（需要 root）：憑證會被複製到 /system/etc/security/cacerts，並對所有應用程式生效。\n\n2) 使用者憑證儲存區（免 root）：每張憑證都會透過 Android 憑證安裝程式安裝。在 Android 7.0 以下的版本中，使用者憑證儲存區中的憑證在系統範圍內受信任，因此同樣可以為所有應用程式修復 HTTPS。\n\n安裝到系統憑證儲存區後，建議重新啟動裝置。</string>
+    <string name="about_badge_desc">「100% slop」徽章</string>
+    <string name="about_badge_note">應用程式圖示完全由人工製作。</string>
+    <string name="about_technical">版本 %1$s（%2$d）\n套件名稱：%3$s\n建置時間：%4$s（%5$s）</string>
+
+    <!-- 僅在 Android 7.0 以上首次啟動時顯示一次（見 LegacyNotice）。 -->
+    <string name="legacy_notice_title">本應用程式針對 Android 4.0 - 6.0 設計</string>
+    <string name="legacy_notice_message">zhusheng 針對 Android 4.0 至 6.0 設計，而本裝置執行的是更新的 Android 版本。\n\nAndroid 7.0 改變了系統處理使用者安裝憑證的方式：使用者憑證儲存區中的憑證不再被 targetSdkVersion 為 7.0 及以上的應用程式信任。因此在本裝置上，「2b. 安裝到使用者憑證儲存區」對大多數應用程式不會生效。\n\n「2a. 安裝到系統憑證儲存區」也許仍然可用，但需要 root，而且高於 6.0 的版本不在 zhusheng 的官方支援範圍內。更高版本的 Android 又進一步改動了系統憑證儲存區，因此也可能失敗。</string>
+    <string name="toast_root_missing">找不到 root（su）。請改用「使用者憑證儲存區」選項，或授予 root 權限。</string>
+    <string name="toast_nothing_selected">未選擇任何憑證授權單位。</string>
+    <string name="toast_nothing_downloaded">尚未下載任何內容。請先點選「下載所選項目」。</string>
+    <string name="toast_need_download_first">還沒有可用的憑證。請先下載。</string>
+    <string name="toast_no_browser">找不到可開啟 %1$s 的應用程式</string>
+
+    <string name="state_idle">閒置</string>
+    <string name="state_downloading">正在下載…</string>
+    <string name="state_ok">已就緒 %1$d 張憑證</string>
+    <string name="state_error">錯誤：%1$s</string>
+    <string name="state_installing">正在安裝…</string>
+
+    <string name="recommended_tag"> [建議]</string>
+
+    <string name="menu_theme">佈景主題</string>
+    <string name="theme_title">選擇佈景主題</string>
+    <string name="theme_message">Material 需要 Android 5.0 或更高版本。裝置預設使用裝置廠商提供的佈景主題。</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Android 4.x 上無法使用（Material 需要 Android 5.0 或更高版本）。</string>
+    <string name="theme_device_default">裝置預設</string>
+    <string name="theme_section_theme">佈景主題</string>
+    <string name="theme_section_scheme">配色配置</string>
+    <string name="theme_scheme_light">淺色</string>
+    <string name="theme_scheme_dark">深色</string>
+    <string name="theme_color_primary">主色</string>
+    <string name="theme_color_accent">強調色</string>
+    <string name="theme_colors_device_default">裝置預設使用裝置廠商提供的配色，因此不提供顏色選項。</string>
+
+    <string name="color_default">預設</string>
+    <string name="color_red">紅色</string>
+    <string name="color_pink">粉紅色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_indigo">靛藍色</string>
+    <string name="color_blue">藍色</string>
+    <string name="color_black_white">黑 / 白</string>
+    <string name="color_teal">青色</string>
+    <string name="color_green">綠色</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_brown">棕色</string>
+    <string name="color_blue_grey">藍灰色</string>
+
+    <string name="menu_language">語言</string>
+    <string name="language_title">選擇語言</string>
+    <string name="language_system">跟隨系統</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+    <string name="status_download_complete">下載完成：%1$d 張憑證已就緒，可以安裝。</string>
+    <string name="toast_downloaded">已下載 %1$d 張憑證。</string>
+    <string name="status_installing_system">正在將 %1$d 張憑證安裝到系統憑證儲存區…</string>
+    <string name="status_system_done">已將 %1$d 張憑證安裝到 /system/etc/security/cacerts。重新啟動後生效。</string>
+    <string name="status_system_failed">系統憑證儲存區安裝未回報成功。</string>
+    <string name="dialog_system_output">系統憑證儲存區安裝輸出</string>
+    <string name="output_note_heading">上面帶標記各行的含意：</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED —— 複製到系統憑證儲存區的憑證數量。儲存區中已有的根憑證會被略過，不計入其中。</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED —— 刪除的憑證檔案數量。在系統憑證儲存區中，指的是本應用程式安裝到該儲存區的根憑證；在使用者憑證儲存區中，指的是保存了你所選憑證的檔案。裝置原有的根憑證不會被刪除。</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED —— 系統憑證儲存區中重複保存多份的根憑證數量。多餘的副本已刪除，每個根憑證保留一份，因此沒有遺失任何憑證。</string>
+    <string name="output_note_done">ZHUSHENG_DONE —— 指令碼已執行到最後。沒有這一行表示指令碼被中斷了。</string>
+    <string name="output_note_manifest">system-installed.txt —— 未找到本應用程式的安裝記錄，因此沒有可安全移除的內容。</string>
+    <string name="output_note_no_script">could not write —— 指令碼無法寫入本應用程式自身的快取目錄，因此完全沒有執行。</string>
+    <string name="output_note_timeout">command timed out —— root shell 未及時回應。若有授權提示正在等待，請授權後重試。</string>
+    <string name="output_note_exec">exec failed —— 無法啟動 root shell。請檢查本機的 su 是否可用。</string>
+    <string name="output_note_no_output">指令碼沒有輸出任何內容。這通常代表 root 要求被拒絕：沒有執行任何操作，也沒有做任何變更。</string>
+
+    <!-- 移除。3a 收回 2a 放進 /system/etc/security/cacerts 的東西：只刪除本應用程式記錄
+         為自己安裝的檔案，裝置原有的根憑證不受影響。3b 對使用者憑證儲存區做同樣的事，
+         該儲存區沒有移除憑證的 API，沒有 root 就無路可走；其背後的選擇列出了三種方式
+         （見下方區塊）。 -->
+    <string name="dialog_remove_title">要移除憑證嗎？</string>
+    <string name="dialog_remove_system_message">本應用程式安裝到 /system/etc/security/cacerts 的憑證會被刪除。裝置原有的根憑證不受影響。同一根憑證在儲存區中存在多份時，也會被縮減為一份。建議之後重新啟動。</string>
+    <string name="dialog_remove_user_message">本應用程式加入使用者憑證儲存區的憑證會被刪除。使用者憑證儲存區沒有移除憑證的 API，因此需要 root。</string>
+    <string name="dialog_remove_ok">移除</string>
+    <string name="dialog_remove_system_output">系統憑證儲存區移除輸出</string>
+    <string name="dialog_remove_user_output">使用者憑證儲存區移除輸出</string>
+    <string name="status_removing_system">正在從系統憑證儲存區移除 %1$d 張憑證…</string>
+    <string name="status_removing_user">正在從使用者憑證儲存區移除 %1$d 張憑證…</string>
+    <string name="status_remove_system_done">已從 /system/etc/security/cacerts 移除 %1$d 張憑證。重新啟動後生效。</string>
+    <string name="status_remove_system_done_deduped">已從 /system/etc/security/cacerts 移除 %1$d 張憑證，並把儲存區中存在多份的 %2$d 個根憑證縮減為一份。重新啟動後生效。</string>
+    <string name="status_remove_system_deduped_only">已把儲存區中存在多份的 %1$d 個根憑證縮減為一份。原先受信任的憑證仍然全部受信任。</string>
+    <string name="status_remove_user_done">已從使用者憑證儲存區移除 %1$d 張憑證。</string>
+    <string name="status_remove_nothing">沒有可移除的項目：目前載入的憑證都不在該儲存區中。</string>
+    <string name="status_remove_failed">移除未回報成功。</string>
+    <string name="toast_remove_needs_root">移除需要 root。沒有 root 時，請在「設定 &gt; 安全性 &gt; 受信任的憑證」中手動刪除。</string>
+
+    <!-- 免 root 的移除方式，作為 3b 三種方式之一提供。使用者憑證儲存區沒有 root 就無法寫入，
+         因此這裡只是帶使用者走一遍系統設定中的憑證清單，並提供開啟該畫面的按鈕；圖片之後再補。 -->
+    <string name="dialog_manual_title">手動移除憑證</string>
+    <string name="dialog_manual_message">沒有 root 時，使用者憑證儲存區中的憑證只能在系統設定裡移除：\n\n1. 開啟「設定」，進入「安全性」，再進入「受信任的憑證」——下方的按鈕會直接帶你前往。\n2. 切換到「使用者」分頁。\n3. 點選要移除的憑證。\n4. 以「確定」或「移除」確認。\n\n本應用程式安裝的憑證會以其 CA 名稱列出（例如 ISRG Root X1）。各版本的文字與順序略有不同；移除前可能需要先輸入螢幕鎖定（PIN、圖形或密碼）。</string>
+    <string name="dialog_manual_open">開啟設定</string>
+    <string name="toast_no_settings_screen">無法在此裝置上開啟憑證清單。請自行開啟「設定 &gt; 安全性 &gt; 受信任的憑證」。</string>
+
+    <!-- 上述步驟的自動版本：開啟憑證清單，由自動確認服務點選屬於目前載入憑證的列。
+         全程不需要 root，這正是提供這個選項的意義。 -->
+    <string name="dialog_auto_remove_title">要自動移除嗎？</string>
+    <string name="dialog_auto_remove_message">系統設定中的憑證清單會被開啟，自動確認服務會把這裡載入的憑證逐一從清單中移除。\n\n它只會點選名稱符合這些憑證的列，並且在你回到這個畫面時立即停止。你隨時可以接手手動處理——清單會停在原來的位置。</string>
+    <string name="dialog_auto_remove_ok">移除</string>
+    <string name="status_auto_remove">正在透過設定畫面移除 %1$d 張憑證…</string>
+    <string name="status_auto_remove_done">自動移除已停止。若仍有剩餘，請檢查清單。</string>
+
+    <!-- 使用者憑證儲存區移除（3b）及其背後的選擇。使用者憑證儲存區沒有移除憑證的 API，三種
+         方式的差別在於由誰執行刪除、以及各自需要什麼：root、由使用者在設定清單中手動操作，
+         或由自動確認服務操作同一份清單。第一種在沒有 root 的裝置上以灰色顯示，其「noroot」
+         文字說明了原因。選擇會被記住，因此對話方塊會停在上次使用的方式上（參見 UserRemoveMode）。 -->
+    <string name="dialog_user_remove_title">從使用者憑證儲存區移除</string>
+    <string name="dialog_user_remove_message">使用者憑證儲存區沒有移除憑證的 API，因此能移除什麼取決於由誰執行刪除。請選擇本裝置可行的方式：</string>
+    <string name="remove_mode_root">用 root 直接刪除檔案</string>
+    <string name="remove_mode_root_noroot">用 root 直接刪除檔案（本裝置沒有 root）</string>
+    <string name="remove_mode_root_note">直接刪除 /data/misc/user/0/cacerts-added（較舊版本為 /data/misc/keychain/cacerts-added）下的檔案；只有當檔案內容確實是目前載入的某張憑證時才會刪除。需要 root。</string>
+    <string name="remove_mode_manual">在設定中手動移除</string>
+    <string name="remove_mode_manual_note">開啟系統設定中的憑證清單，由您逐一移除：點選該列、按下「移除」、確認。應用程式不會刪除任何東西，這種方式免 root。</string>
+    <string name="remove_mode_auto">自動移除（無障礙服務）</string>
+    <string name="remove_mode_auto_note">開啟的是同一份清單，但由自動確認服務點選這些憑證所在的列並確認隨後的提示，整個過程無需照看。需要先在系統無障礙設定中開啟該服務，且需要 Android 4.1 或更新版本。</string>
+    <string name="dialog_user_remove_ok">繼續</string>
+    <!-- 使用者憑證儲存區安裝（2b）及其背後的選擇。憑證一律經由 Android 憑證安裝程式安裝；三種
+         模式的差別只在於會跳出多少次提示、由誰來回答——標籤點明了這兩點，下方的說明則展開細述。
+         選擇會被記住，因此對話方塊會停在上次使用的模式上（參見 UserInstallMode）。 -->
+    <string name="dialog_user_install_title">安裝到使用者憑證儲存區</string>
+    <string name="dialog_user_install_message">憑證會透過 Android 憑證安裝程式安裝，並由它請求確認。請選擇這些提示的處理方式：</string>
+    <string name="install_mode_bundle">整組只提示一次</string>
+    <string name="install_mode_bundle_note">所有憑證會一次交給安裝程式。部分 Android 4.x 版本會讀取這份集合卻忽略它；此時應用程式會改為逐一詢問。提示由您自行確認。</string>
+    <string name="install_mode_single">每張憑證提示一次</string>
+    <string name="install_mode_single_note">每張憑證各有自己的對話方塊，確認一個就會開啟下一個。比第一種方式慢，但在任何安裝程式上表現一致。提示由您自行確認。</string>
+    <string name="install_mode_auto">自動回答這些提示</string>
+    <string name="install_mode_auto_note">自動確認服務會在每個對話方塊上點「確定」，整個過程無需看顧。需要先在系統無障礙設定中開啟該服務，且需要 Android 4.1 或更新版本。</string>
+    <string name="dialog_user_install_ok">安裝</string>
+
+    <!-- 自動確認服務：在開啟啟用它的設定頁之前先作說明的對話方塊、服務已開啟時顯示的對話方塊，
+         以及由它應答的安裝狀態列。設定清單中要尋找的項目是 accessibility_service_label，
+         說明文字正是引用它。 -->
+    <string name="dialog_auto_confirm_title">自動確認服務</string>
+    <string name="dialog_auto_confirm_message">zhusheng 可以代您回答憑證安裝程式的提示，但它無權自行開啟自己的無障礙服務——這只能由您在系統無障礙設定中完成。\n\n當本應用程式發起的安裝或移除正在進行時，該服務會點按安裝程式對話方塊中的「確定」按鈕，移除時還會點選設定中憑證清單的列。除此之外它什麼都不做，也絕不會去碰其他應用程式開啟的對話方塊。\n\n需要開啟的項目名為「%1$s」。</string>
+    <string name="dialog_auto_confirm_flash_warning">警告：此服務的運作方式是快速點過一個個畫面，因此執行期間螢幕可能會反覆閃爍。如果你對閃爍的光線敏感（光敏性癲癇），請改用需要手動確認的方式——那兩種方式都不需要開啟服務。</string>
+    <string name="dialog_auto_confirm_on_message">自動確認服務已開啟。它會回答憑證安裝程式的提示，並在本應用程式從使用者憑證儲存區移除憑證時點選設定中的憑證清單。\n\n如果您更願意全部親自確認，請在系統無障礙設定中關閉它。</string>
+    <string name="dialog_auto_confirm_open">開啟無障礙設定</string>
+    <string name="toast_auto_confirm_still_off">自動確認服務仍為關閉狀態，因此沒有啟動任何操作。</string>
+    <string name="status_installing_user">正在將 %1$d 張憑證安裝到使用者憑證儲存區。請在每個 Android 提示中確認。</string>
+    <string name="status_installing_user_auto">正在將 %1$d 張憑證安裝到使用者憑證儲存區。提示由該服務回答。</string>
+    <string name="status_user_done">使用者憑證儲存區安裝完成。在 Android 7.0 以下，這些憑證現已在系統範圍內受信任。</string>
+    <string name="dialog_system_trusted_title">已在系統層級受信任</string>
+    <string name="dialog_system_trusted_message">Android 只會把一張憑證保存在一個儲存區中。這些憑證已經存在於本機的系統憑證儲存區中，因此憑證安裝程式會回報成功，但不會向使用者憑證儲存區加入任何內容：\n\n%1$s\n\n一切正常，也沒有任何損失——它們本來就已被所有應用程式信任。如果希望它們出現在使用者憑證儲存區中，請先用 3a 從系統憑證儲存區移除，再重新安裝。</string>
+    <string name="status_user_nothing_system_trusted">沒有可安裝的項目：%1$d 張憑證已在系統層級受信任，Android 不會在使用者憑證儲存區中再保存一份副本。</string>
+    <string name="status_user_done_system_trusted">使用者憑證儲存區安裝完成。已略過 %1$d 張憑證：它們已在系統層級受信任，Android 不會將其複製到使用者憑證儲存區。</string>
+    <string name="toast_rebooting">正在重新啟動…</string>
+
+    <!-- CertCatalog 裡的憑證來源：列表中第一行的供應商名稱，以及 URL 下方的說明。 -->
+    <string name="src_mozilla_name">Mozilla CA 根憑證包（涵蓋所有主要 CA）</string>
+    <string name="src_goog_bundle_name">Google Trust Services（根憑證包）</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt - ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt - ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google - GTS 根憑證 R1</string>
+    <string name="src_gts_r2_name">Google - GTS 根憑證 R2</string>
+    <string name="src_gts_r3_name">Google - GTS 根憑證 R3</string>
+    <string name="src_gts_r4_name">Google - GTS 根憑證 R4</string>
+    <string name="src_amazon_r1_name">Amazon 根憑證 CA 1</string>
+    <string name="src_amazon_r2_name">Amazon 根憑證 CA 2</string>
+    <string name="src_amazon_r3_name">Amazon 根憑證 CA 3</string>
+    <string name="src_amazon_r4_name">Amazon 根憑證 CA 4</string>
+    <string name="src_digicert_global_name">DigiCert 全球根憑證 CA</string>
+    <string name="src_digicert_g2_name">DigiCert 全球根憑證 G2</string>
+    <string name="src_digicert_g3_name">DigiCert 全球根憑證 G3</string>
+    <string name="src_digicert_g4_name">DigiCert 受信任根憑證 G4</string>
+    <string name="src_digicert_ev_name">DigiCert 高保證 EV 根憑證</string>
+    <string name="src_globalsign_r1_name">GlobalSign 根憑證 CA（R1）</string>
+    <string name="src_globalsign_r3_name">GlobalSign 根憑證 CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign 根憑證 CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo USERTrust RSA 憑證授權單位</string>
+    <string name="src_comodo_rsa_name">Sectigo COMODO RSA 憑證授權單位</string>
+    <string name="src_comodo_ecc_name">Sectigo COMODO ECC 憑證授權單位</string>
+    <string name="src_entrust_g2_name">Entrust 根憑證授權單位 G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy 根憑證授權單位 G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA 根憑證授權單位 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC 根憑證授權單位 2017</string>
+    <string name="src_mozilla_note">完整的 Mozilla NSS 信任庫，一次下載即可涵蓋所有主要 CA。</string>
+    <string name="src_goog_bundle_note">Google Trust Services 目前的所有根憑證（GTS Root R1-R4 等）。</string>
+    <string name="src_isrg_x1_note">為絕大多數 Let\'s Encrypt 憑證簽章（RSA）。</string>
+    <string name="src_isrg_x2_note">較新的 Let\'s Encrypt 憑證所使用的 ECDSA 根憑證。</string>
+    <string name="src_gts_r1_note">Google Trust Services 根憑證 R1（RSA 4096）。</string>
+    <string name="src_gts_r2_note">Google Trust Services 根憑證 R2（RSA 4096）。</string>
+    <string name="src_gts_r3_note">Google Trust Services 根憑證 R3（ECDSA P-384）。</string>
+    <string name="src_gts_r4_note">Google Trust Services 根憑證 R4（ECDSA P-384）。</string>
+    <string name="src_amazon_r1_note">Amazon Trust Services 根憑證 CA 1（RSA 2048）。</string>
+    <string name="src_amazon_r2_note">Amazon Trust Services 根憑證 CA 2（RSA 4096）。</string>
+    <string name="src_amazon_r3_note">Amazon Trust Services 根憑證 CA 3（ECDSA P-256）。</string>
+    <string name="src_amazon_r4_note">Amazon Trust Services 根憑證 CA 4（ECDSA P-384）。</string>
+    <string name="src_digicert_global_note">DigiCert 早期（legacy）全球根憑證。</string>
+    <string name="src_digicert_g2_note">DigiCert 較新的全球根憑證 G2。</string>
+    <string name="src_digicert_g3_note">DigiCert 全球根憑證 G3（ECDSA P-384）。</string>
+    <string name="src_digicert_g4_note">DigiCert 受信任根憑證 G4。</string>
+    <string name="src_digicert_ev_note">DigiCert 高保證（EV）根憑證。</string>
+    <string name="src_globalsign_r1_note">GlobalSign 最早的根憑證。</string>
+    <string name="src_globalsign_r3_note">GlobalSign 根憑證 R3（RSA 2048）。</string>
+    <string name="src_globalsign_r6_note">GlobalSign 根憑證 R6（RSA 4096）。</string>
+    <string name="src_usertrust_rsa_note">USERTrust RSA 根憑證（Sectigo，原 Comodo）。</string>
+    <string name="src_comodo_rsa_note">COMODO RSA 根憑證。</string>
+    <string name="src_comodo_ecc_note">COMODO ECC 根憑證。</string>
+    <string name="src_entrust_g2_note">Entrust 根憑證 G2（RSA 2048）。</string>
+    <string name="src_godaddy_g2_note">GoDaddy 根憑證 G2（RSA 2048）。</string>
+    <string name="src_ms_rsa_2017_note">Microsoft RSA 根憑證 2017。</string>
+    <string name="src_ms_ecc_2017_note">Microsoft ECC 根憑證 2017。</string>
+</resources>

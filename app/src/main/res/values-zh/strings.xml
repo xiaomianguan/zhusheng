@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">适用于 Android 4.0 - 6.0 的根证书安装工具</string>
+
+    <string name="btn_download">1. 下载所选项</string>
+    <string name="btn_install_system">2a. 安装到系统证书库（需 root）</string>
+    <string name="btn_install_user">2b. 安装到用户证书库（无需 root）</string>
+    <string name="btn_remove_system">3a. 从系统证书库移除（需 root）</string>
+    <string name="btn_remove_user">3b. 从用户证书库移除</string>
+    <string name="btn_reboot">立即重启</string>
+    <string name="btn_select_all">全选</string>
+    <string name="btn_select_recommended">推荐</string>
+    <string name="btn_select_none">全不选</string>
+
+    <string name="status_idle">就绪。选择需要的证书颁发机构，然后点击“下载所选项”。</string>
+    <string name="status_root_yes">root：可用</string>
+    <string name="status_root_no">root：不可用</string>
+    <string name="device_info_unreadable_roots">%1$d 个系统根证书无法读取</string>
+    <string name="dialog_unreadable_roots_title">本应用无法读取的根证书</string>
+    <string name="dialog_unreadable_roots_message">/system/etc/security/cacerts 中有 %1$d 个文件是普通应用无法读取的。它们的权限与预装根证书不同（预装根证书为 0644，属主 root）。\n\n这些证书仍然是受信任的——只是本应用看不到它们。由此会产生一个令人困惑的结果：安装时因文件不可读而跳过该根证书，随后证书安装程序又因该根证书确实已受信任而拒绝添加，于是整个流程结束时什么都没发生。\n\n这是设备的问题，而不是某次操作的问题。用 root 权限执行以下命令，把这些文件改成与其他根证书相同的权限即可修复：\n\nchmod 644 /system/etc/security/cacerts/&lt;名称&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;名称&gt;\n\n使用 root 安装到系统证书库（2a）时，写入的副本就带有这些权限。</string>
+
+    <string name="menu_about">关于</string>
+    <string name="menu_website">项目网站</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">仅选择推荐项</string>
+
+    <!-- 自动确认服务：先说明该服务、再打开启用它的设置页面的菜单项，以及系统在“辅助功能”
+         列表中为该服务显示的两段文字（参见 AutoConfirmService）。 -->
+    <string name="menu_auto_confirm">自动确认安装</string>
+    <string name="accessibility_service_label">[zhusheng] 自动确认证书安装</string>
+    <string name="accessibility_service_description">在 zhusheng 将证书安装到用户证书库时，自动确认 Android 证书安装程序的对话框；在移除这些证书时，它会代为点选系统设置中的证书列表。需要 Android 4.1 或更高版本；在 Android 4.0 上需要手动确认提示。仅在这样一次操作的开始到结束之间生效。</string>
+    <string name="toast_no_accessibility_settings">此设备上没有辅助功能设置。</string>
+
+    <string name="about_title">关于 zhusheng</string>
+    <string name="about_website_label">项目网站：%1$s</string>
+    <string name="about_github_label">GitHub：%1$s</string>
+    <string name="about_message">zhusheng 会下载各大 TLS/SSL 提供商官方发布的根证书并进行安装，使较旧的 Android 设备（4.0 - 6.0）能够重新验证现代 HTTPS 网站所使用的证书。\n\n提供两种安装方式：\n\n1) 系统证书库（需要 root）：证书会被复制到 /system/etc/security/cacerts，并对所有应用生效。\n\n2) 用户证书库（无需 root）：每张证书都会通过 Android 证书安装程序安装。在 Android 7.0 以下的版本中，用户证书库中的证书在系统范围内受信任，因此同样可以为所有应用修复 HTTPS。\n\n安装到系统证书库后，建议重启设备。</string>
+    <string name="about_badge_desc">“100% slop”徽章</string>
+    <string name="about_badge_note">应用图标完全由人工制作。</string>
+    <string name="about_technical">版本 %1$s（%2$d）\n包名：%3$s\n构建时间：%4$s（%5$s）</string>
+
+    <!-- 仅在 Android 7.0 及以上首次启动时显示一次（见 LegacyNotice）。 -->
+    <string name="legacy_notice_title">本应用针对 Android 4.0 - 6.0 设计</string>
+    <string name="legacy_notice_message">zhusheng 针对 Android 4.0 至 6.0 设计，而本设备运行的是更新的 Android 版本。\n\nAndroid 7.0 改变了系统处理用户安装证书的方式：用户证书库中的证书不再被 targetSdkVersion 为 7.0 及以上的应用信任。因此在本设备上，「2b. 安装到用户证书库」对大多数应用不会生效。\n\n「2a. 安装到系统证书库」也许仍然可用，但需要 root，而且高于 6.0 的版本不在 zhusheng 的官方支持范围内。更高版本的 Android 又进一步改动了系统证书库，因此也可能失败。</string>
+
+
+    <string name="toast_root_missing">未找到 root（su）。请改用“用户证书库”选项，或授予 root 权限。</string>
+    <string name="toast_nothing_selected">未选择任何证书颁发机构。</string>
+    <string name="toast_nothing_downloaded">尚未下载任何内容。请先点击“下载所选项”。</string>
+    <string name="toast_need_download_first">还没有可用的证书。请先下载。</string>
+    <string name="toast_no_browser">未找到可打开 %1$s 的应用</string>
+
+    <string name="state_idle">空闲</string>
+    <string name="state_downloading">正在下载…</string>
+    <string name="state_ok">已就绪 %1$d 张证书</string>
+    <string name="state_error">错误：%1$s</string>
+    <string name="state_installing">正在安装…</string>
+
+    <string name="recommended_tag"> [推荐]</string>
+
+    <string name="menu_theme">主题</string>
+    <string name="theme_title">选择主题</string>
+    <string name="theme_message">Material 需要 Android 5.0 或更高版本。设备默认使用设备厂商提供的主题。</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Android 4.x 上不可用（Material 需要 Android 5.0 或更高版本）。</string>
+    <string name="theme_device_default">设备默认</string>
+    <string name="theme_section_theme">主题</string>
+    <string name="theme_section_scheme">配色方案</string>
+    <string name="theme_scheme_light">浅色</string>
+    <string name="theme_scheme_dark">深色</string>
+    <string name="theme_color_primary">主色</string>
+    <string name="theme_color_accent">强调色</string>
+    <string name="theme_colors_device_default">设备默认使用设备厂商提供的配色，因此不提供颜色选项。</string>
+
+    <string name="color_default">默认</string>
+    <string name="color_red">红色</string>
+    <string name="color_pink">粉色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_indigo">靛蓝</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_black_white">黑 / 白</string>
+    <string name="color_teal">青色</string>
+    <string name="color_green">绿色</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_brown">棕色</string>
+    <string name="color_blue_grey">蓝灰色</string>
+
+    <string name="menu_language">语言</string>
+    <string name="language_title">选择语言</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+
+    <string name="status_download_complete">下载完成：%1$d 张证书已就绪，可进行安装。</string>
+    <string name="toast_downloaded">已下载 %1$d 张证书。</string>
+    <string name="status_installing_system">正在将 %1$d 张证书安装到系统证书库…</string>
+    <string name="status_system_done">已将 %1$d 张证书安装到 /system/etc/security/cacerts。重启后生效。</string>
+    <string name="status_system_failed">系统证书库安装未报告成功。</string>
+    <string name="dialog_system_output">系统证书库安装输出</string>
+    <string name="output_note_heading">上面带标记各行的含义：</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED —— 复制到系统证书库的证书数量。证书库中已有的根证书会被跳过，不计入其中。</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED —— 删除的证书文件数量。在系统证书库中，指的是本应用安装到该库的根证书；在用户证书库中，指的是保存了你所选证书的文件。设备自带的根证书不会被删除。</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED —— 系统证书库中重复保存了多份的根证书数量。多余的副本已删除，每个根证书保留一份，因此没有丢失任何证书。</string>
+    <string name="output_note_done">ZHUSHENG_DONE —— 脚本已运行到最后。没有这一行说明脚本被中断了。</string>
+    <string name="output_note_manifest">system-installed.txt —— 未找到本应用的安装记录，因此没有可安全移除的内容。</string>
+    <string name="output_note_no_script">could not write —— 脚本无法写入本应用自身的缓存目录，因此完全没有执行。</string>
+    <string name="output_note_timeout">command timed out —— root shell 未及时响应。若有授权提示正在等待，请授权后重试。</string>
+    <string name="output_note_exec">exec failed —— 无法启动 root shell。请检查本机的 su 是否可用。</string>
+    <string name="output_note_no_output">脚本没有输出任何内容。这通常意味着 root 请求被拒绝：没有执行任何操作，也没有做任何改动。</string>
+
+    <!-- 移除。3a 收回 2a 放进 /system/etc/security/cacerts 的东西：只删除本应用记录为自己
+         安装的文件，设备自带的根证书不受影响。3b 对用户证书库做同样的事，该证书库没有
+         移除证书的 API，没有 root 就无路可走；其背后的选择列出了三种方式（见下方区块）。 -->
+    <string name="dialog_remove_title">要移除证书吗？</string>
+    <string name="dialog_remove_system_message">本应用安装到 /system/etc/security/cacerts 的证书将被删除。设备自带的根证书不受影响。同一根证书在证书库中存在多份时，也会被缩减为一份。建议之后重新启动。</string>
+    <string name="dialog_remove_user_message">本应用添加到用户证书库的证书将被删除。用户证书库没有移除证书的 API，因此需要 root。</string>
+    <string name="dialog_remove_ok">移除</string>
+    <string name="dialog_remove_system_output">系统证书库移除输出</string>
+    <string name="dialog_remove_user_output">用户证书库移除输出</string>
+    <string name="status_removing_system">正在从系统证书库移除 %1$d 张证书…</string>
+    <string name="status_removing_user">正在从用户证书库移除 %1$d 张证书…</string>
+    <string name="status_remove_system_done">已从 /system/etc/security/cacerts 移除 %1$d 张证书。重启后生效。</string>
+    <string name="status_remove_system_done_deduped">已从 /system/etc/security/cacerts 移除 %1$d 张证书，并把证书库中存在多份的 %2$d 个根证书缩减为一份。重启后生效。</string>
+    <string name="status_remove_system_deduped_only">已把证书库中存在多份的 %1$d 个根证书缩减为一份。原先受信任的证书仍然全部受信任。</string>
+    <string name="status_remove_user_done">已从用户证书库移除 %1$d 张证书。</string>
+    <string name="status_remove_nothing">没有可移除的项目：当前加载的证书都不在该证书库中。</string>
+    <string name="status_remove_failed">移除未报告成功。</string>
+    <string name="toast_remove_needs_root">移除需要 root。没有 root 时，请在“设置 &gt; 安全 &gt; 受信任的凭据”中手动删除。</string>
+
+    <!-- 免 root 的移除方式，作为 3b 三种方式之一提供。用户证书库没有 root 就无法写入，
+         因此这里只是带用户走一遍系统设置中的证书列表，并提供打开该界面的按钮；图片之后再补。 -->
+    <string name="dialog_manual_title">手动移除证书</string>
+    <string name="dialog_manual_message">没有 root 时，用户证书库中的证书只能在系统设置里移除：\n\n1. 打开“设置”，进入“安全”，再进入“受信任的凭据”——下方的按钮会直接带你去。\n2. 切换到“用户”标签页。\n3. 点选要移除的证书。\n4. 以“确定”或“移除”确认。\n\n本应用安装的证书会以其 CA 名称列出（例如 ISRG Root X1）。各版本的措辞与顺序略有不同；移除前可能需要先输入屏幕锁定（PIN、图案或密码）。</string>
+    <string name="dialog_manual_open">打开设置</string>
+    <string name="toast_no_settings_screen">无法在此设备上打开证书列表。请自行打开“设置 &gt; 安全 &gt; 受信任的凭据”。</string>
+
+    <!-- 上述步骤的自动版本：打开证书列表，由自动确认服务点选属于当前加载证书的行。
+         全程不需要 root，这正是提供这个选项的意义。 -->
+    <string name="dialog_auto_remove_title">要自动移除吗？</string>
+    <string name="dialog_auto_remove_message">系统设置中的证书列表会被打开，自动确认服务会把这里加载的证书逐一从列表中移除。\n\n它只会点选名称符合这些证书的行，并且在您回到此界面时立即停止。您随时可以接手手动处理——列表会停在原来的位置。</string>
+    <string name="dialog_auto_remove_ok">移除</string>
+    <string name="status_auto_remove">正在通过设置界面移除 %1$d 张证书…</string>
+    <string name="status_auto_remove_done">自动移除已停止。若仍有剩余，请检查列表。</string>
+
+    <!-- 用户证书库移除（3b）及其背后的选择。用户证书库没有移除证书的 API，三种方式的差别
+         在于由谁执行删除、以及各自需要什么：root、由用户在设置列表中手动操作，或由自动确认
+         服务操作同一份列表。第一种在没有 root 的设备上以灰色显示，其“noroot”文案说明了
+         原因。选择会被记住，因此对话框会停在上次使用的方式上（参见 UserRemoveMode）。 -->
+    <string name="dialog_user_remove_title">从用户证书库移除</string>
+    <string name="dialog_user_remove_message">用户证书库没有移除证书的 API，因此能移除什么取决于由谁执行删除。请选择本设备可行的方式：</string>
+    <string name="remove_mode_root">用 root 直接删除文件</string>
+    <string name="remove_mode_root_noroot">用 root 直接删除文件（本设备没有 root）</string>
+    <string name="remove_mode_root_note">直接删除 /data/misc/user/0/cacerts-added（较旧版本为 /data/misc/keychain/cacerts-added）下的文件；只有当文件内容确实是当前载入的某张证书时才会删除。需要 root。</string>
+    <string name="remove_mode_manual">在设置中手动移除</string>
+    <string name="remove_mode_manual_note">打开系统设置中的证书列表，由您逐一移除：点选该行、按下“移除”、确认。应用不会删除任何东西，这种方式无需 root。</string>
+    <string name="remove_mode_auto">自动移除（无障碍服务）</string>
+    <string name="remove_mode_auto_note">打开的是同一份列表，但由自动确认服务点选这些证书所在的行并确认随后的提示，整个过程无需照看。需要先在系统辅助功能设置中开启该服务，且需要 Android 4.1 或更高版本。</string>
+    <string name="dialog_user_remove_ok">继续</string>
+    <!-- 用户证书库安装（2b）及其背后的选择。证书始终经由 Android 证书安装程序安装；三种模式的
+         差别只在于会弹出多少次提示、由谁来回答——标签点明了这两点，下方的说明则展开细述。
+         选择会被记住，因此对话框会停在上次使用的模式上（参见 UserInstallMode）。 -->
+    <string name="dialog_user_install_title">安装到用户证书库</string>
+    <string name="dialog_user_install_message">证书会通过 Android 证书安装程序安装，由它请求确认。请选择这些提示的处理方式：</string>
+    <string name="install_mode_bundle">整套只提示一次</string>
+    <string name="install_mode_bundle_note">所有证书会一次性交给安装程序。部分 Android 4.x 版本会读取这份合集却忽略它；此时应用会改为逐张询问。提示由您自己确认。</string>
+    <string name="install_mode_single">每张证书提示一次</string>
+    <string name="install_mode_single_note">每张证书各有自己的对话框，确认一个就会打开下一个。比第一种方式慢，但在任何安装程序上表现一致。提示由您自己确认。</string>
+    <string name="install_mode_auto">自动回答这些提示</string>
+    <string name="install_mode_auto_note">自动确认服务会在每个对话框上点“确定”，整个过程无需照看。需要先在系统辅助功能设置中开启该服务，且需要 Android 4.1 或更高版本。</string>
+    <string name="dialog_user_install_ok">安装</string>
+
+    <!-- 自动确认服务：在打开启用它的设置页之前先作说明的对话框、服务已开启时显示的对话框，
+         以及由它应答的安装状态行。设置列表中要寻找的条目是 accessibility_service_label，
+         说明文字正是引用它。 -->
+    <string name="dialog_auto_confirm_title">自动确认服务</string>
+    <string name="dialog_auto_confirm_message">zhusheng 可以代您回答证书安装程序的提示，但它无权自行开启自己的辅助功能服务——这只能由您在系统辅助功能设置中完成。\n\n当本应用发起的安装或移除正在进行时，该服务会点按安装程序对话框中的“确定”按钮，移除时还会点选设置中证书列表的行。除此之外它什么都不做，也绝不会去碰其他应用打开的对话框。\n\n需要开启的条目名为“%1$s”。</string>
+    <string name="dialog_auto_confirm_flash_warning">警告：该服务的工作方式是快速点过一个个界面，因此运行期间屏幕可能会反复闪烁。如果你对闪烁的光敏感（光敏性癫痫），请改用需要手动确认的方式——那两种方式都不需要开启服务。</string>
+    <string name="dialog_auto_confirm_on_message">自动确认服务已开启。它会回答证书安装程序的提示，并在本应用从用户证书库移除证书时点选设置中的证书列表。\n\n如果您更愿意全部亲自确认，请在系统辅助功能设置中关闭它。</string>
+    <string name="dialog_auto_confirm_open">打开辅助功能设置</string>
+    <string name="toast_auto_confirm_still_off">自动确认服务仍处于关闭状态，因此没有启动任何操作。</string>
+    <string name="status_installing_user">正在将 %1$d 张证书安装到用户证书库。请在每个 Android 提示中确认。</string>
+    <string name="status_installing_user_auto">正在将 %1$d 张证书安装到用户证书库。提示由该服务回答。</string>
+    <string name="status_user_done">用户证书库安装完成。在 Android 7.0 以下，这些证书现已在系统范围内受信任。</string>
+    <string name="dialog_system_trusted_title">已在系统层面受信任</string>
+    <string name="dialog_system_trusted_message">Android 只会把一张证书保存在一个证书库中。这些证书已经存在于本机的系统证书库中，因此证书安装程序会报告成功，但不会向用户证书库添加任何内容：\n\n%1$s\n\n一切正常，也没有任何损失——它们本来就已被所有应用信任。如果希望它们出现在用户证书库中，请先用 3a 从系统证书库中移除，再重新安装。</string>
+    <string name="status_user_nothing_system_trusted">没有可安装的项目：%1$d 张证书已在系统层面受信任，Android 不会在用户证书库中再保存一份副本。</string>
+    <string name="status_user_done_system_trusted">用户证书库安装完成。已跳过 %1$d 张证书：它们已在系统层面受信任，Android 不会将其复制到用户证书库。</string>
+    <string name="toast_rebooting">正在重启…</string>
+
+    <!-- CertCatalog 里的证书来源：列表中第一行的提供商名称，以及 URL 下方的说明。 -->
+    <string name="src_mozilla_name">Mozilla CA 根证书包（涵盖所有主要 CA）</string>
+    <string name="src_goog_bundle_name">Google Trust Services（根证书包）</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google GTS 根证书 R1</string>
+    <string name="src_gts_r2_name">Google GTS 根证书 R2</string>
+    <string name="src_gts_r3_name">Google GTS 根证书 R3</string>
+    <string name="src_gts_r4_name">Google GTS 根证书 R4</string>
+    <string name="src_amazon_r1_name">Amazon 根证书 CA 1</string>
+    <string name="src_amazon_r2_name">Amazon 根证书 CA 2</string>
+    <string name="src_amazon_r3_name">Amazon 根证书 CA 3</string>
+    <string name="src_amazon_r4_name">Amazon 根证书 CA 4</string>
+    <string name="src_digicert_global_name">DigiCert 全球根证书 CA</string>
+    <string name="src_digicert_g2_name">DigiCert 全球根证书 G2</string>
+    <string name="src_digicert_g3_name">DigiCert 全球根证书 G3</string>
+    <string name="src_digicert_g4_name">DigiCert 受信任根证书 G4</string>
+    <string name="src_digicert_ev_name">DigiCert 高保证 EV 根证书</string>
+    <string name="src_globalsign_r1_name">GlobalSign 根证书 CA（R1）</string>
+    <string name="src_globalsign_r3_name">GlobalSign 根证书 CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign 根证书 CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo USERTrust RSA 证书颁发机构</string>
+    <string name="src_comodo_rsa_name">Sectigo COMODO RSA 证书颁发机构</string>
+    <string name="src_comodo_ecc_name">Sectigo COMODO ECC 证书颁发机构</string>
+    <string name="src_entrust_g2_name">Entrust 根证书颁发机构 G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy 根证书颁发机构 G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA 根证书颁发机构 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC 根证书颁发机构 2017</string>
+    <string name="src_mozilla_note">完整的 Mozilla NSS 信任库，一次下载即可覆盖所有主要 CA。</string>
+    <string name="src_goog_bundle_note">Google Trust Services 当前的全部根证书（GTS Root R1-R4 等）。</string>
+    <string name="src_isrg_x1_note">为绝大多数 Let\'s Encrypt 证书签名（RSA）。</string>
+    <string name="src_isrg_x2_note">较新的 Let\'s Encrypt 证书所使用的 ECDSA 根证书。</string>
+    <string name="src_gts_r1_note">Google Trust Services 根证书 R1（RSA 4096）。</string>
+    <string name="src_gts_r2_note">Google Trust Services 根证书 R2（RSA 4096）。</string>
+    <string name="src_gts_r3_note">Google Trust Services 根证书 R3（ECDSA P-384）。</string>
+    <string name="src_gts_r4_note">Google Trust Services 根证书 R4（ECDSA P-384）。</string>
+    <string name="src_amazon_r1_note">Amazon Trust Services 根证书 CA 1（RSA 2048）。</string>
+    <string name="src_amazon_r2_note">Amazon Trust Services 根证书 CA 2（RSA 4096）。</string>
+    <string name="src_amazon_r3_note">Amazon Trust Services 根证书 CA 3（ECDSA P-256）。</string>
+    <string name="src_amazon_r4_note">Amazon Trust Services 根证书 CA 4（ECDSA P-384）。</string>
+    <string name="src_digicert_global_note">DigiCert 早期（legacy）全球根证书。</string>
+    <string name="src_digicert_g2_note">DigiCert 较新的全球根证书 G2。</string>
+    <string name="src_digicert_g3_note">DigiCert 全球根证书 G3（ECDSA P-384）。</string>
+    <string name="src_digicert_g4_note">DigiCert 受信任根证书 G4。</string>
+    <string name="src_digicert_ev_note">DigiCert 高保证（EV）根证书。</string>
+    <string name="src_globalsign_r1_note">GlobalSign 最早的根证书。</string>
+    <string name="src_globalsign_r3_note">GlobalSign 根证书 R3（RSA 2048）。</string>
+    <string name="src_globalsign_r6_note">GlobalSign 根证书 R6（RSA 4096）。</string>
+    <string name="src_usertrust_rsa_note">USERTrust RSA 根证书（Sectigo，原 Comodo）。</string>
+    <string name="src_comodo_rsa_note">COMODO RSA 根证书。</string>
+    <string name="src_comodo_ecc_note">COMODO ECC 根证书。</string>
+    <string name="src_entrust_g2_note">Entrust 根证书 G2（RSA 2048）。</string>
+    <string name="src_godaddy_g2_note">GoDaddy 根证书 G2（RSA 2048）。</string>
+    <string name="src_ms_rsa_2017_note">Microsoft RSA 根证书 2017。</string>
+    <string name="src_ms_ecc_2017_note">Microsoft ECC 根证书 2017。</string>
+</resources>

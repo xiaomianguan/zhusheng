@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zs_white">#FFFFFF</color>
+    <color name="zs_black">#FF000000</color>
+    <color name="zs_text">#FF222222</color>
+    <color name="zs_text_dim">#FF888888</color>
+    <color name="zs_ok">#FF2E7D32</color>
+    <color name="zs_error">#FFC62828</color>
+
+    <!-- Content colors of the light color scheme (the original look). -->
+    <color name="zs_light_background">#FFFFFFFF</color>
+    <color name="zs_light_text">#FF222222</color>
+    <color name="zs_light_text_dim">#FF888888</color>
+    <color name="zs_light_divider">#22000000</color>
+
+    <!-- Content colors of the dark color scheme. -->
+    <color name="zs_dark_background">#FF121212</color>
+    <color name="zs_dark_text">#FFECECEC</color>
+    <color name="zs_dark_text_dim">#FF9E9E9E</color>
+    <color name="zs_dark_divider">#22FFFFFF</color>
+
+    <!-- Shown as the "default" swatch of the Holo color picker: the accent color
+         the untouched Holo theme draws its check boxes, radio buttons and progress
+         bars in. -->
+    <color name="zs_holo_accent">#FF0099CC</color>
+
+    <!--
+      The Holo accent palette. Holo's own accent - the cyan its widgets are drawn
+      in - is deliberately not part of it: that is what the picker's "default"
+      entry already stands for, so the two swatches would be indistinguishable.
+    -->
+    <color name="holo_accent_green">#FF669900</color>
+    <color name="holo_accent_orange">#FFFF8800</color>
+    <color name="holo_accent_purple">#FF9933CC</color>
+    <color name="holo_accent_red">#FFCC0000</color>
+
+    <!--
+      The Material palette, as 500 (the color itself) and 700 (the darker shade
+      used for the status bar) pairs.
+    -->
+    <color name="mat_red">#FFF44336</color>
+    <color name="mat_red_dark">#FFD32F2F</color>
+    <color name="mat_pink">#FFE91E63</color>
+    <color name="mat_pink_dark">#FFC2185B</color>
+    <color name="mat_purple">#FF9C27B0</color>
+    <color name="mat_purple_dark">#FF7B1FA2</color>
+    <color name="mat_indigo">#FF3F51B5</color>
+    <color name="mat_indigo_dark">#FF303F9F</color>
+    <color name="mat_blue">#FF2196F3</color>
+    <color name="mat_blue_dark">#FF1976D2</color>
+    <color name="mat_teal">#FF009688</color>
+    <color name="mat_teal_dark">#FF00796B</color>
+    <color name="mat_green">#FF4CAF50</color>
+    <color name="mat_green_dark">#FF388E3C</color>
+    <color name="mat_orange">#FFFF9800</color>
+    <color name="mat_orange_dark">#FFF57C00</color>
+    <color name="mat_brown">#FF795548</color>
+    <color name="mat_brown_dark">#FF5D4037</color>
+    <color name="mat_blue_grey">#FF607D8B</color>
+    <color name="mat_blue_grey_dark">#FF455A64</color>
+
+    <!--
+      The 200 tints of the same palette, used by the dark color scheme wherever the
+      light one uses a 500, exactly as Material does with its own accent: deep teal
+      500 (#009688) in a light theme, deep teal 200 (#80CBC4) in a dark one. The
+      accent row wears them in the dark scheme, and the primary row shows them there
+      as well, though a primary color is only applied in the light scheme (a dark
+      theme keeps its action bar dark).
+    -->
+    <color name="mat_red_200">#FFEF9A9A</color>
+    <color name="mat_pink_200">#FFF48FB1</color>
+    <color name="mat_purple_200">#FFCE93D8</color>
+    <color name="mat_indigo_200">#FF9FA8DA</color>
+    <color name="mat_blue_200">#FF90CAF9</color>
+    <color name="mat_green_200">#FFA5D6A7</color>
+    <color name="mat_orange_200">#FFFFCC80</color>
+    <color name="mat_brown_200">#FFBCAAA4</color>
+    <color name="mat_blue_grey_200">#FFB0BEC5</color>
+    <color name="mat_teal_200">#FF80CBC4</color>
+
+    <!--
+      The "black / white" accent: black in the light color scheme, white in the dark
+      one, so that the accent stays visible either way.
+    -->
+    <color name="mat_black">#FF000000</color>
+    <color name="mat_white">#FFFFFFFF</color>
+</resources>

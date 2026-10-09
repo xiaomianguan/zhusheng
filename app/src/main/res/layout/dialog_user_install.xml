@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The chooser behind "2b. Install to USER store (no root)".
+
+  A USER store install goes through the Android certificate installer, and the only
+  thing about it a person can decide is how the confirmations go: one prompt for the
+  whole set, one prompt per certificate, or none at all because the auto-confirm
+  service answers them. The three are named here, and the line under them spells out
+  the selected one - it is set by MainActivity#showUserInstallChooser, because it
+  follows the selection, so this file carries no text of its own beyond the labels.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_user_install_message"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:id="@+id/install_mode_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/install_mode_bundle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/install_mode_bundle" />
+
+            <RadioButton
+                android:id="@+id/install_mode_single"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/install_mode_single" />
+
+            <RadioButton
+                android:id="@+id/install_mode_auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/install_mode_auto" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/install_mode_note"
+            style="@style/ThemeNote" />
+
+    </LinearLayout>
+
+</ScrollView>

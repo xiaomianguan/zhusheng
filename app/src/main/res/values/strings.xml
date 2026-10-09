@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">Root certificate installer for Android 4.0 - 6.0</string>
+
+    <string name="btn_download">1. Download selected</string>
+    <string name="btn_install_system">2a. Install to SYSTEM store (root)</string>
+    <string name="btn_install_user">2b. Install to USER store (no root)</string>
+    <string name="btn_remove_system">3a. Remove from SYSTEM store (root)</string>
+    <string name="btn_remove_user">3b. Remove from USER store</string>
+    <string name="btn_reboot">Reboot now</string>
+    <string name="btn_select_all">Select all</string>
+    <string name="btn_select_recommended">Recommended</string>
+    <string name="btn_select_none">Select none</string>
+
+    <string name="status_idle">Ready. Select the providers you need and tap \"Download selected\".</string>
+    <string name="status_root_yes">root: available</string>
+    <string name="status_root_no">root: not available</string>
+
+    <!-- A root the SYSTEM store lists but no app may read: the file is there, its
+         permissions are not the ones the preinstalled roots carry, and every app takes
+         the certificate for absent while the certificate installer - running as the
+         system - refuses to add it again. Named on the device line, explained when that
+         line is tapped (see TrustedRoots#unreadableSystemRoots). -->
+    <string name="device_info_unreadable_roots">%1$d system root(s) unreadable</string>
+    <string name="dialog_unreadable_roots_title">Roots this app cannot read</string>
+    <string name="dialog_unreadable_roots_message">%1$d file(s) in /system/etc/security/cacerts cannot be read by an ordinary app. Their permissions are not the ones the preinstalled roots have (0644, owned by root).\n\nThe certificates are still trusted - only this app cannot see them. That has a confusing consequence: an install skips the root because the file is unreadable, then the certificate installer refuses it because the root really is already trusted, so the run finishes having done nothing.\n\nThis is a fault of the device, not of a run. A root shell repairs it by giving those files the permissions of every other root:\n\nchmod 644 /system/etc/security/cacerts/&lt;name&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;name&gt;\n\nInstalling into the SYSTEM store with root (2a) writes its own copies with those permissions.</string>
+
+    <string name="menu_about">About</string>
+    <string name="menu_website">Project website</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">Select recommended only</string>
+
+    <!-- The auto-confirm service: the menu entry, which opens the dialog that explains
+         the service before the settings page that switches it on, and the two strings
+         the system accessibility list shows for the service itself (see
+         AutoConfirmService). -->
+    <string name="menu_auto_confirm">Auto-confirm installs</string>
+    <string name="accessibility_service_label">[zhusheng] Auto-confirm certificate installs</string>
+    <string name="accessibility_service_description">Confirms the dialogs of the Android certificate installer while zhusheng installs certificates into the user store, and taps through the certificate list in the settings while it removes them again. Needs Android 4.1 or newer; on Android 4.0 the prompts have to be confirmed by hand. It only acts between the start and the end of such a run.</string>
+    <string name="toast_no_accessibility_settings">No accessibility settings found on this device.</string>
+    <string name="menu_revolution" translatable="false">REVOLUTION</string>
+
+    <string name="about_title">About zhusheng</string>
+    <string name="about_website_label">Project website: %1$s</string>
+    <string name="about_github_label">GitHub: %1$s</string>
+    <string name="about_message">zhusheng downloads the official root certificates published by the major TLS/SSL providers and installs them so that older Android devices (4.0 - 6.0) can again validate the certificates used by modern HTTPS websites.\n\nTwo install modes are available:\n\n1) SYSTEM store (needs root): the certificates are copied into /system/etc/security/cacerts and are trusted by every app.\n\n2) USER store (no root): each certificate is installed through the Android certificate installer. On Android versions below 7.0, certificates in the user store are trusted system-wide, so this also fixes HTTPS for all apps.\n\nA reboot is recommended after installing into the SYSTEM store.</string>
+    <string name="about_badge_desc">100% slop badge</string>
+    <string name="about_badge_note">The app icon is fully human-made.</string>
+    <string name="about_technical">Version %1$s (%2$d)\nPackage: %3$s\nBuilt: %4$s (%5$s)</string>
+
+    <!-- Shown once, on the first launch of a device running Android 7.0 or newer
+         (see LegacyNotice). -->
+    <string name="legacy_notice_title">Designed for Android 4.0 - 6.0</string>
+    <string name="legacy_notice_message">zhusheng was designed for Android 4.0 through 6.0, and this device runs a newer version.\n\nAndroid 7.0 changed the way the system handles user-installed certificates: certificates placed in the user store are no longer trusted by apps that target Android 7.0 or newer. Installing into the USER store (2b) will therefore have no effect for most apps here.\n\nInstalling into the SYSTEM store (2a) may still work, but it needs root, and versions above 6.0 are beyond what zhusheng officially supports. Later releases changed the system certificate store further, so it may fail.</string>
+
+
+    <string name="toast_root_missing">root (su) was not found. Use the USER store option instead, or grant root access.</string>
+    <string name="toast_nothing_selected">No providers selected.</string>
+    <string name="toast_nothing_downloaded">Nothing downloaded yet. Tap \"Download selected\" first.</string>
+    <string name="toast_need_download_first">No certificates ready. Download first.</string>
+    <string name="toast_no_browser">No app found to open %1$s</string>
+
+    <string name="state_idle">idle</string>
+    <string name="state_downloading">downloading…</string>
+    <string name="state_ok">%1$d certificate(s) ready</string>
+    <string name="state_error">error: %1$s</string>
+    <string name="state_installing">installing…</string>
+
+    <string name="recommended_tag"> [recommended]</string>
+
+    <string name="menu_theme">Theme</string>
+    <string name="theme_title">Choose theme</string>
+    <string name="theme_message">Material is available on Android 5.0 and newer. Device default uses the theme supplied by your device manufacturer.</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Not available on Android 4.x (Material needs Android 5.0 or newer).</string>
+    <string name="theme_device_default">Device default</string>
+    <string name="theme_section_theme">Theme</string>
+    <string name="theme_section_scheme">Color scheme</string>
+    <string name="theme_scheme_light">Light</string>
+    <string name="theme_scheme_dark">Dark</string>
+    <string name="theme_color_primary">Primary color</string>
+    <string name="theme_color_accent">Accent color</string>
+    <string name="theme_colors_device_default">Device default uses the colors supplied by your device, so no color choices are offered.</string>
+
+    <string name="color_default">Default</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_indigo">Indigo</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_black_white">Black / White</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_green">Green</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_blue_grey">Blue gray</string>
+
+    <string name="menu_language">Language</string>
+    <string name="language_title">Choose language</string>
+    <string name="language_system">System default</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+
+    <string name="status_download_complete">Download complete: %1$d certificate(s) ready to install.</string>
+    <string name="toast_downloaded">Downloaded %1$d certificate(s).</string>
+    <string name="status_installing_system">Installing %1$d certificate(s) into the SYSTEM store…</string>
+    <string name="status_system_done">Installed %1$d certificate(s) into /system/etc/security/cacerts. Reboot to apply.</string>
+    <string name="status_system_failed">System install did not report success.</string>
+    <string name="dialog_system_output">SYSTEM store install output</string>
+
+    <!-- The output dialog of a store installation or removal quotes the shell script as
+         it came back, then explains the markers in it (see ScriptNotes). These are those
+         explanations; each one names the marker it belongs to, because the reader has to
+         be able to match it with the line above. -->
+    <string name="output_note_heading">What the marked lines above mean:</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED — how many certificates were copied into the system store. Roots the store already held were left alone and are not counted.</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED — how many certificate files were deleted. In the system store these are the roots this app installed there; in the user store they are the files holding the certificates you selected. Roots that came with the device are never touched.</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED — how many roots the system store held more than once. The extra copies were deleted and one copy of each was kept, so no certificate was lost.</string>
+    <string name="output_note_done">ZHUSHENG_DONE — the script ran to the end. Without this line the script was interrupted.</string>
+    <string name="output_note_manifest">system-installed.txt — the record of what this app installed was not found, so there was nothing it is allowed to remove.</string>
+    <string name="output_note_no_script">could not write — the script could not be written into the cache directory of the app itself, so nothing was run at all.</string>
+    <string name="output_note_timeout">command timed out — the root shell did not answer in time. Grant root access if a prompt is waiting and try again.</string>
+    <string name="output_note_exec">exec failed — the root shell could not be started at all. Check that su works on this device.</string>
+    <string name="output_note_no_output">The script printed nothing at all. That is usually what a refused request for root looks like: nothing ran, so nothing was changed.</string>
+
+    <!-- Removing. 3a takes back what 2a put into /system/etc/security/cacerts: only the
+         files this app recorded as its own, so the roots the device came with stay.
+         3b does the same for the user store, which has no API for it and therefore has
+         no way at all without root; the chooser behind it names the three ways out
+         (see the block below). -->
+    <string name="dialog_remove_title">Remove certificates?</string>
+    <string name="dialog_remove_system_message">The certificates this app installed into /system/etc/security/cacerts will be deleted again. Roots that came with the device are left alone. A root the store holds more than once is reduced to a single copy as well. A reboot is recommended afterwards.</string>
+    <string name="dialog_remove_user_message">The certificates this app added to the user store will be deleted again. The user store has no API for removing a certificate, so this needs root.</string>
+    <string name="dialog_remove_ok">Remove</string>
+    <string name="dialog_remove_system_output">SYSTEM store removal output</string>
+    <string name="dialog_remove_user_output">USER store removal output</string>
+    <string name="status_removing_system">Removing %1$d certificate(s) from the SYSTEM store…</string>
+    <string name="status_removing_user">Removing %1$d certificate(s) from the USER store…</string>
+    <string name="status_remove_system_done">Removed %1$d certificate(s) from /system/etc/security/cacerts. Reboot to apply.</string>
+    <string name="status_remove_system_done_deduped">Removed %1$d certificate(s) from /system/etc/security/cacerts and reduced %2$d root(s) the store held more than once to a single copy. Reboot to apply.</string>
+    <string name="status_remove_system_deduped_only">Reduced %1$d root(s) that the store held more than once to a single copy. Every certificate that was trusted before is still trusted.</string>
+    <string name="status_remove_user_done">Removed %1$d certificate(s) from the user store.</string>
+    <string name="status_remove_nothing">Nothing to remove: none of the certificates that are loaded was found in that store.</string>
+    <string name="status_remove_failed">Removal did not report success.</string>
+    <string name="toast_remove_needs_root">Removing needs root. Without it, delete the certificate by hand under Settings &gt; Security &gt; Trusted credentials.</string>
+
+    <!-- The rootless way to remove a certificate, offered as one of the three ways of
+         3b. The user store cannot be written without root, so this only walks the user
+         through the certificate list of the system settings and offers to open that
+         screen; images are meant to follow. -->
+    <string name="dialog_manual_title">Removing a certificate by hand</string>
+    <string name="dialog_manual_message">Without root a certificate in the user store can only be removed in the system settings:\n\n1. Open Settings, then Security, then Trusted credentials - the button below takes you there.\n2. Switch to the USER tab.\n3. Tap the certificate you want to remove.\n4. Confirm with OK or Remove.\n\nThe certificates this app installed are listed under the name of their CA, for example \"ISRG Root X1\". Wording and order differ a little between Android releases. A screen lock (PIN, pattern or password) may be asked for before a certificate can be removed.</string>
+    <string name="dialog_manual_open">Open settings</string>
+    <string name="toast_no_settings_screen">No certificate list could be opened on this device. Open Settings &gt; Security &gt; Trusted credentials yourself.</string>
+
+    <!-- The automated version of that walkthrough: the certificate list is opened and
+         the auto-confirm service taps the rows that belong to the loaded certificates.
+         No root anywhere, which is the point of offering it at all. -->
+    <string name="dialog_auto_remove_title">Remove automatically?</string>
+    <string name="dialog_auto_remove_message">The certificate list of the system settings will be opened and the auto-confirm service will remove the certificates that are loaded here from it, one row at a time.\n\nIt only taps rows whose name matches one of these certificates, and it stops as soon as this screen is in front again. You can take over by hand at any moment - the list stays where it is.</string>
+    <string name="dialog_auto_remove_ok">Remove</string>
+    <string name="status_auto_remove">Removing %1$d certificate(s) through the settings screen…</string>
+    <string name="status_auto_remove_done">Automatic removal stopped. Check the list if anything is left.</string>
+
+    <!-- The USER store removal (3b) and the chooser behind it. The user store has no API
+         for removing a certificate, so the three ways differ in who does the deleting
+         and in what that needs: root, the user working the settings list, or the
+         auto-confirm service working that same list. The first is offered greyed out on
+         a device that has no root, which is what its "noroot" label says. The choice is
+         remembered, so the chooser opens on the way used last (see UserRemoveMode). -->
+    <string name="dialog_user_remove_title">Remove from the USER store</string>
+    <string name="dialog_user_remove_message">The user store has no API for removing a certificate, so what leaves it is decided by who does the deleting. Choose the way this device can take:</string>
+    <string name="remove_mode_root">Delete the files with root</string>
+    <string name="remove_mode_root_noroot">Delete the files with root (this device has none)</string>
+    <string name="remove_mode_root_note">The files under /data/misc/user/0/cacerts-added (older releases: /data/misc/keychain/cacerts-added) are deleted directly. A file goes only when its content is one of the certificates loaded here. Needs root.</string>
+    <string name="remove_mode_manual">Remove by hand in the settings</string>
+    <string name="remove_mode_manual_note">The certificate list of the system settings is opened and you remove each certificate there: tap its row, press Remove, confirm. Nothing is deleted by the app, and this way needs no root.</string>
+    <string name="remove_mode_auto">Remove automatically (accessibility)</string>
+    <string name="remove_mode_auto_note">That same list is opened, but the auto-confirm service taps the rows of these certificates and confirms what follows, so the run needs no attention. It has to be switched on in the system accessibility settings first, and it needs Android 4.1 or newer.</string>
+    <string name="dialog_user_remove_ok">Continue</string>
+
+    <!-- The USER store install (2b) and the chooser behind it. The certificates always
+         go through the Android certificate installer; the three modes differ only in
+         how many prompts it asks for and who answers them, which is what the labels
+         name and what each caption spells out. The choice is remembered, so the
+         chooser opens on the mode used last (see UserInstallMode). -->
+    <string name="dialog_user_install_title">Install into the USER store</string>
+    <string name="dialog_user_install_message">The certificates are installed through the Android certificate installer, which asks for confirmation. Choose how those prompts should go:</string>
+    <string name="install_mode_bundle">One prompt for the whole set</string>
+    <string name="install_mode_bundle_note">Every certificate is offered to the installer at once. Some Android 4.x builds read that and ignore it; the app then asks about one certificate after the other. You confirm the prompts yourself.</string>
+    <string name="install_mode_single">One prompt per certificate</string>
+    <string name="install_mode_single_note">Each certificate gets its own dialog, and confirming one opens the next. Slower than the first option, but it behaves the same on every installer. You confirm the prompts yourself.</string>
+    <string name="install_mode_auto">Answer the prompts automatically</string>
+    <string name="install_mode_auto_note">The auto-confirm service taps OK in every dialog, so the run needs no attention. It has to be switched on in the system accessibility settings first, and it needs Android 4.1 or newer.</string>
+    <string name="dialog_user_install_ok">Install</string>
+
+    <!-- The auto-confirm service: the dialog that explains it before the settings page
+         that switches it on, the one shown while it is on, and the status line of an
+         install it is answering. The entry to look for in the settings list is
+         accessibility_service_label, which the explanation quotes. -->
+    <string name="dialog_auto_confirm_title">Auto-confirm service</string>
+    <string name="dialog_auto_confirm_message">zhusheng can answer the prompts of the certificate installer for you, but it may not switch on its own accessibility service - only you can do that, in the system accessibility settings.\n\nWhile an install or a removal started by this app is going on, the service taps the OK button of the installer\'s dialogs and, during a removal, the rows of the certificate list in the settings. Outside such a run it does nothing at all, and it never touches a dialog another app opened.\n\nThe entry to switch on is called \"%1$s\".</string>
+    <string name="dialog_auto_confirm_flash_warning">Warning: the service works by tapping through screens quickly, and the display can flash repeatedly while a run is going on. If flashing lights are a problem for you (photosensitive epilepsy), use one of the ways that confirm by hand instead - neither of them needs a service.</string>
+    <string name="dialog_auto_confirm_on_message">The auto-confirm service is on. It answers the certificate installer\'s prompts and works the certificate list of the settings while this app removes certificates from the user store.\n\nSwitch it off in the system accessibility settings if you would rather confirm everything yourself.</string>
+    <string name="dialog_auto_confirm_open">Open accessibility settings</string>
+    <string name="toast_auto_confirm_still_off">The auto-confirm service is still off, so nothing was started.</string>
+    <string name="status_installing_user">Installing %1$d certificate(s) into the USER store. Confirm each Android prompt.</string>
+    <string name="status_installing_user_auto">Installing %1$d certificate(s) into the USER store. The service answers the prompts.</string>
+    <string name="status_user_done">USER store install finished. On Android &lt; 7.0 these certificates are now trusted system-wide.</string>
+
+    <!-- What a USER store install cannot do anything about. Android keeps one copy of
+         a certificate, so one the SYSTEM store already holds is not also added to the
+         user store - the certificate installer reports success all the same, and the
+         certificate then shows up under the system roots instead of the user ones. The
+         app names them up front rather than leaving an empty user store and no
+         explanation (see TrustedRoots#systemTrusted). -->
+    <string name="dialog_system_trusted_title">Already trusted at the system level</string>
+    <string name="dialog_system_trusted_message">Android keeps a certificate in one store only. These certificates are already in the SYSTEM store of this device, so the certificate installer reports success for them and adds nothing to the USER store:\n\n%1$s\n\nNothing is broken and nothing was lost - they are trusted by every app already. To see them in the user store instead, remove them from the SYSTEM store first (3a) and install them again.</string>
+    <string name="status_user_nothing_system_trusted">Nothing to install: %1$d certificate(s) are already trusted at the system level, and Android keeps no second copy in the user store.</string>
+    <string name="status_user_done_system_trusted">USER store install finished. %1$d certificate(s) were left out because they are already trusted at the system level, which Android does not duplicate into the user store.</string>
+    <string name="toast_rebooting">Rebooting…</string>
+
+    <!-- The certificate sources of CertCatalog: the provider name shown on the
+         first line of a row and the note shown under its URL. -->
+    <string name="src_mozilla_name">Mozilla CA Bundle (all major CAs)</string>
+    <string name="src_goog_bundle_name">Google Trust Services (bundle)</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt - ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt - ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google - GTS Root R1</string>
+    <string name="src_gts_r2_name">Google - GTS Root R2</string>
+    <string name="src_gts_r3_name">Google - GTS Root R3</string>
+    <string name="src_gts_r4_name">Google - GTS Root R4</string>
+    <string name="src_amazon_r1_name">Amazon Root CA 1</string>
+    <string name="src_amazon_r2_name">Amazon Root CA 2</string>
+    <string name="src_amazon_r3_name">Amazon Root CA 3</string>
+    <string name="src_amazon_r4_name">Amazon Root CA 4</string>
+    <string name="src_digicert_global_name">DigiCert Global Root CA</string>
+    <string name="src_digicert_g2_name">DigiCert Global Root G2</string>
+    <string name="src_digicert_g3_name">DigiCert Global Root G3</string>
+    <string name="src_digicert_g4_name">DigiCert Trusted Root G4</string>
+    <string name="src_digicert_ev_name">DigiCert High Assurance EV Root CA</string>
+    <string name="src_globalsign_r1_name">GlobalSign Root CA (R1)</string>
+    <string name="src_globalsign_r3_name">GlobalSign Root CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign Root CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo - USERTrust RSA Certification Authority</string>
+    <string name="src_comodo_rsa_name">Sectigo - COMODO RSA Certification Authority</string>
+    <string name="src_comodo_ecc_name">Sectigo - COMODO ECC Certification Authority</string>
+    <string name="src_entrust_g2_name">Entrust Root Certification Authority - G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy Root Certificate Authority - G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA Root Certificate Authority 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC Root Certificate Authority 2017</string>
+
+    <string name="src_mozilla_note">Complete Mozilla NSS trust bundle. One-shot fix that covers every major CA.</string>
+    <string name="src_goog_bundle_note">All current Google Trust Services roots (GTS Root R1-R4 and others).</string>
+    <string name="src_isrg_x1_note">Signs the vast majority of Let\'s Encrypt certificates (RSA).</string>
+    <string name="src_isrg_x2_note">ECDSA root used by newer Let\'s Encrypt certificates.</string>
+    <string name="src_gts_r1_note">Google Trust Services root R1 (RSA 4096).</string>
+    <string name="src_gts_r2_note">Google Trust Services root R2 (RSA 4096).</string>
+    <string name="src_gts_r3_note">Google Trust Services root R3 (ECDSA P-384).</string>
+    <string name="src_gts_r4_note">Google Trust Services root R4 (ECDSA P-384).</string>
+    <string name="src_amazon_r1_note">Amazon Trust Services root CA 1 (RSA 2048).</string>
+    <string name="src_amazon_r2_note">Amazon Trust Services root CA 2 (RSA 4096).</string>
+    <string name="src_amazon_r3_note">Amazon Trust Services root CA 3 (ECDSA P-256).</string>
+    <string name="src_amazon_r4_note">Amazon Trust Services root CA 4 (ECDSA P-384).</string>
+    <string name="src_digicert_global_note">DigiCert legacy global root.</string>
+    <string name="src_digicert_g2_note">DigiCert modern global root G2.</string>
+    <string name="src_digicert_g3_note">DigiCert global root G3 (ECDSA P-384).</string>
+    <string name="src_digicert_g4_note">DigiCert trusted root G4.</string>
+    <string name="src_digicert_ev_note">DigiCert high assurance EV root.</string>
+    <string name="src_globalsign_r1_note">GlobalSign original root CA.</string>
+    <string name="src_globalsign_r3_note">GlobalSign root CA R3 (RSA 2048).</string>
+    <string name="src_globalsign_r6_note">GlobalSign root CA R6 (RSA 4096).</string>
+    <string name="src_usertrust_rsa_note">USERTrust RSA root (Sectigo, ex-Comodo).</string>
+    <string name="src_comodo_rsa_note">COMODO RSA root CA.</string>
+    <string name="src_comodo_ecc_note">COMODO ECC root CA.</string>
+    <string name="src_entrust_g2_note">Entrust root CA G2 (RSA 2048).</string>
+    <string name="src_godaddy_g2_note">GoDaddy root CA G2 (RSA 2048).</string>
+    <string name="src_ms_rsa_2017_note">Microsoft RSA root CA 2017.</string>
+    <string name="src_ms_ecc_2017_note">Microsoft ECC root CA 2017.</string>
+</resources>

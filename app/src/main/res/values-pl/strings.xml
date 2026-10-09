@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">zhusheng</string>
+
+    <string name="header_title">zhusheng</string>
+    <string name="header_subtitle">Instalator certyfikatów głównych dla Androida 4.0 - 6.0</string>
+
+    <string name="btn_download">1. Pobierz zaznaczone</string>
+    <string name="btn_install_system">2a. Zainstaluj w magazynie SYSTEM (root)</string>
+    <string name="btn_install_user">2b. Zainstaluj w magazynie UŻYTKOWNIKA (bez roota)</string>
+    <string name="btn_remove_system">3a. Usuń z magazynu SYSTEM (root)</string>
+    <string name="btn_remove_user">3b. Usuń z magazynu UŻYTKOWNIKA</string>
+    <string name="btn_reboot">Uruchom ponownie</string>
+    <string name="btn_select_all">Zaznacz wszystko</string>
+    <string name="btn_select_recommended">Zalecane</string>
+    <string name="btn_select_none">Odznacz wszystko</string>
+
+    <string name="status_idle">Gotowe. Wybierz potrzebnych dostawców i naciśnij „Pobierz zaznaczone”.</string>
+    <string name="status_root_yes">root: dostępny</string>
+    <string name="status_root_no">root: niedostępny</string>
+    <string name="device_info_unreadable_roots">%1$d korzeni systemowych nie można odczytać</string>
+    <string name="dialog_unreadable_roots_title">Korzenie, których ta aplikacja nie może odczytać</string>
+    <string name="dialog_unreadable_roots_message">%1$d plików w /system/etc/security/cacerts nie może odczytać zwykła aplikacja. Ich uprawnienia nie są takie, jakie mają wstępnie zainstalowane korzenie (0644, właściciel root).\n\nCertyfikaty są nadal zaufane - tylko ta aplikacja ich nie widzi. Ma to mylący skutek: instalacja pomija korzeń, bo pliku nie można odczytać, a następnie instalator certyfikatów odmawia, bo korzeń naprawdę jest już zaufany, więc przebieg kończy się bez żadnego efektu.\n\nTo usterka urządzenia, nie przebiegu. Powłoka roota naprawia ją, nadając tym plikom uprawnienia każdego innego korzenia:\n\nchmod 644 /system/etc/security/cacerts/&lt;nazwa&gt;\nchown 0:0 /system/etc/security/cacerts/&lt;nazwa&gt;\n\nInstalacja w magazynie SYSTEM z rootem (2a) zapisuje własne kopie z tymi uprawnieniami.</string>
+
+    <string name="menu_about">O programie</string>
+    <string name="menu_website">Strona projektu</string>
+    <string name="menu_github">GitHub</string>
+    <string name="menu_select_recommended">Zaznacz tylko zalecane</string>
+
+    <!-- Usługa automatycznego potwierdzania: pozycja menu, która otwiera okno objaśniające
+         usługę przed stroną ustawień, na której się ją włącza, oraz dwa teksty pokazywane
+         dla samej usługi na liście ułatwień dostępu (patrz AutoConfirmService). -->
+    <string name="menu_auto_confirm">Automatyczne potwierdzanie instalacji</string>
+    <string name="accessibility_service_label">[zhusheng] Automatyczne potwierdzanie instalacji certyfikatów</string>
+    <string name="accessibility_service_description">Potwierdza okna instalatora certyfikatów Androida, gdy zhusheng instaluje certyfikaty w magazynie UŻYTKOWNIKA, i przechodzi listę certyfikatów w ustawieniach, gdy je z niego usuwa. Wymaga Androida 4.1 lub nowszego; w Androidzie 4.0 komunikaty trzeba potwierdzać ręcznie. Działa tylko od początku do końca takiego przebiegu.</string>
+    <string name="toast_no_accessibility_settings">Na tym urządzeniu nie znaleziono ustawień ułatwień dostępu.</string>
+
+    <string name="about_title">O programie zhusheng</string>
+    <string name="about_website_label">Strona projektu: %1$s</string>
+    <string name="about_github_label">GitHub: %1$s</string>
+    <string name="about_message">zhusheng pobiera oficjalne certyfikaty główne publikowane przez najważniejszych dostawców TLS/SSL i instaluje je, aby starsze urządzenia z Androidem (4.0 - 6.0) znów mogły weryfikować certyfikaty używane przez współczesne witryny HTTPS.\n\nDostępne są dwa tryby instalacji:\n\n1) Magazyn SYSTEM (wymaga roota): certyfikaty są kopiowane do /system/etc/security/cacerts i są zaufane dla każdej aplikacji.\n\n2) Magazyn UŻYTKOWNIKA (bez roota): każdy certyfikat jest instalowany przez systemowy instalator certyfikatów Androida. W wersjach Androida starszych niż 7.0 certyfikaty w magazynie użytkownika są zaufane w całym systemie, więc to również naprawia HTTPS we wszystkich aplikacjach.\n\nPo instalacji w magazynie SYSTEM zalecane jest ponowne uruchomienie urządzenia.</string>
+    <string name="about_badge_desc">Plakietka „100% slop”</string>
+    <string name="about_badge_note">Ikona aplikacji jest w całości wykonana ręcznie.</string>
+    <string name="about_technical">Wersja %1$s (%2$d)\nPakiet: %3$s\nKompilacja: %4$s (%5$s)</string>
+
+    <!-- Pokazywane raz, przy pierwszym uruchomieniu na urządzeniu z Androidem 7.0 lub nowszym (patrz LegacyNotice). -->
+    <string name="legacy_notice_title">Przeznaczone dla Androida 4.0 - 6.0</string>
+    <string name="legacy_notice_message">zhusheng powstał z myślą o Androidzie 4.0 - 6.0, a to urządzenie działa na nowszej wersji.\n\nAndroid 7.0 zmienił sposób, w jaki system traktuje certyfikaty instalowane przez użytkownika: certyfikaty w magazynie użytkownika nie są już zaufane dla aplikacji kierowanych na Androida 7.0 lub nowszego. Dlatego instalacja w magazynie UŻYTKOWNIKA (2b) nie przyniesie tu efektu w większości aplikacji.\n\nInstalacja w magazynie SYSTEM (2a) może jeszcze działać, ale wymaga roota, a wersje nowsze niż 6.0 wykraczają poza to, co zhusheng oficjalnie obsługuje. Kolejne wydania Androida zmieniły systemowy magazyn certyfikatów jeszcze bardziej, więc może się nie udać.</string>
+    <string name="toast_root_missing">Nie znaleziono roota (su). Użyj opcji magazynu UŻYTKOWNIKA albo przyznaj uprawnienia roota.</string>
+    <string name="toast_nothing_selected">Nie wybrano żadnych dostawców.</string>
+    <string name="toast_nothing_downloaded">Nic jeszcze nie pobrano. Naciśnij najpierw „Pobierz zaznaczone”.</string>
+    <string name="toast_need_download_first">Brak gotowych certyfikatów. Najpierw pobierz.</string>
+    <string name="toast_no_browser">Nie znaleziono aplikacji do otwarcia %1$s</string>
+
+    <string name="state_idle">bezczynny</string>
+    <string name="state_downloading">pobieranie…</string>
+    <string name="state_ok">gotowych certyfikatów: %1$d</string>
+    <string name="state_error">błąd: %1$s</string>
+    <string name="state_installing">instalowanie…</string>
+
+    <string name="recommended_tag"> [zalecane]</string>
+
+    <string name="menu_theme">Motyw</string>
+    <string name="theme_title">Wybierz motyw</string>
+    <string name="theme_message">Material jest dostępny na Androidzie 5.0 i nowszym. Ustawienie domyślne urządzenia korzysta z motywu dostarczonego przez producenta.</string>
+    <string name="theme_holo">Holo</string>
+    <string name="theme_material">Material</string>
+    <string name="theme_material_unavailable">Niedostępne na Androidzie 4.x (Material wymaga Androida 5.0 lub nowszego).</string>
+    <string name="theme_device_default">Domyślny urządzenia</string>
+    <string name="theme_section_theme">Motyw</string>
+    <string name="theme_section_scheme">Schemat kolorów</string>
+    <string name="theme_scheme_light">Jasny</string>
+    <string name="theme_scheme_dark">Ciemny</string>
+    <string name="theme_color_primary">Kolor główny</string>
+    <string name="theme_color_accent">Kolor akcentu</string>
+    <string name="theme_colors_device_default">Domyślny motyw urządzenia korzysta z kolorów dostarczonych przez producenta, więc nie ma tu wyboru kolorów.</string>
+
+    <string name="color_default">Domyślny</string>
+    <string name="color_red">Czerwony</string>
+    <string name="color_pink">Różowy</string>
+    <string name="color_purple">Fioletowy</string>
+    <string name="color_indigo">Indygo</string>
+    <string name="color_blue">Niebieski</string>
+    <string name="color_black_white">Czarny / biały</string>
+    <string name="color_teal">Morski</string>
+    <string name="color_green">Zielony</string>
+    <string name="color_orange">Pomarańczowy</string>
+    <string name="color_brown">Brązowy</string>
+    <string name="color_blue_grey">Niebieskoszary</string>
+
+    <string name="menu_language">Język</string>
+    <string name="language_title">Wybierz język</string>
+    <string name="language_system">Domyślny systemu</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_traditional">繁體中文</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_swedish">Svenska</string>
+    <string name="status_download_complete">Pobieranie zakończone: %1$d certyfikatów gotowych do instalacji.</string>
+    <string name="toast_downloaded">Pobrano certyfikatów: %1$d.</string>
+    <string name="status_installing_system">Instalowanie %1$d certyfikatów w magazynie SYSTEM…</string>
+    <string name="status_system_done">Zainstalowano %1$d certyfikatów w /system/etc/security/cacerts. Uruchom ponownie, aby zastosować zmiany.</string>
+    <string name="status_system_failed">Instalacja w magazynie SYSTEM nie zgłosiła powodzenia.</string>
+    <string name="dialog_system_output">Wynik instalacji w magazynie SYSTEM</string>
+    <string name="output_note_heading">Co znaczą powyższe wiersze z oznaczeniami:</string>
+    <string name="output_note_copied">ZHUSHENG_COPIED — ile certyfikatów skopiowano do magazynu systemowego. Korzenie, które magazyn już zawierał, zostały pominięte i nie są liczone.</string>
+    <string name="output_note_removed">ZHUSHENG_REMOVED — ile plików certyfikatów usunięto. W magazynie systemowym są to korzenie, które ta aplikacja tam zainstalowała; w magazynie użytkownika są to pliki zawierające wybrane certyfikaty. Korzenie dostarczone z urządzeniem nie są nigdy ruszane.</string>
+    <string name="output_note_deduped">ZHUSHENG_DEDUPED — ile korzeni magazyn systemowy zawierał więcej niż raz. Nadmiarowe kopie zostały usunięte, a po jednej kopii każdego korzenia zachowano, więc żaden certyfikat nie został utracony.</string>
+    <string name="output_note_done">ZHUSHENG_DONE — skrypt wykonał się do końca. Bez tego wiersza skrypt został przerwany.</string>
+    <string name="output_note_manifest">system-installed.txt — nie znaleziono zapisu instalacji tej aplikacji, więc nie było nic, co wolno jej usunąć.</string>
+    <string name="output_note_no_script">could not write — nie udało się zapisać skryptu w katalogu pamięci podręcznej samej aplikacji, więc nic nie zostało uruchomione.</string>
+    <string name="output_note_timeout">command timed out — powłoka roota nie odpowiedziała na czas. Jeśli czeka pytanie o dostęp, przyznaj go i spróbuj ponownie.</string>
+    <string name="output_note_exec">exec failed — nie udało się w ogóle uruchomić powłoki roota. Sprawdź, czy su działa na tym urządzeniu.</string>
+    <string name="output_note_no_output">Skrypt nie wypisał niczego. Tak zwykle wygląda odrzucona prośba o roota: nic się nie uruchomiło, więc nic nie zostało zmienione.</string>
+
+    <!-- Usuwanie. 3a cofa to, co 2a włożyło do /system/etc/security/cacerts: usuwa tylko
+         pliki, które ta aplikacja zapisała jako własne, więc korzenie dostarczone
+         z urządzeniem zostają. 3b robi to samo z magazynem użytkownika, który nie ma
+         API do usuwania certyfikatów i bez roota nie ma z niego żadnego wyjścia; wybór
+         za nim nazywa trzy sposoby (patrz blok poniżej). -->
+    <string name="dialog_remove_title">Usunąć certyfikaty?</string>
+    <string name="dialog_remove_system_message">Certyfikaty zainstalowane przez tę aplikację w /system/etc/security/cacerts zostaną usunięte. Korzenie dostarczone z urządzeniem pozostaną nietknięte. Korzeń, który magazyn zawiera więcej niż raz, zostanie też zredukowany do jednej kopii. Zalecany jest późniejszy restart.</string>
+    <string name="dialog_remove_user_message">Certyfikaty dodane przez tę aplikację do magazynu użytkownika zostaną usunięte. Magazyn użytkownika nie ma API do usuwania certyfikatów, więc wymaga to roota.</string>
+    <string name="dialog_remove_ok">Usuń</string>
+    <string name="dialog_remove_system_output">Wynik usuwania z magazynu SYSTEM</string>
+    <string name="dialog_remove_user_output">Wynik usuwania z magazynu użytkownika</string>
+    <string name="status_removing_system">Usuwanie %1$d certyfikatów z magazynu SYSTEM…</string>
+    <string name="status_removing_user">Usuwanie %1$d certyfikatów z magazynu użytkownika…</string>
+    <string name="status_remove_system_done">Usunięto %1$d certyfikatów z /system/etc/security/cacerts. Uruchom ponownie, aby zastosować zmiany.</string>
+    <string name="status_remove_system_done_deduped">Usunięto %1$d certyfikatów z /system/etc/security/cacerts i zredukowano %2$d korzeni, które magazyn zawierał więcej niż raz, do jednej kopii. Uruchom ponownie, aby zastosować zmiany.</string>
+    <string name="status_remove_system_deduped_only">Zredukowano %1$d korzeni, które magazyn zawierał więcej niż raz, do jednej kopii. Każdy certyfikat, który był zaufany wcześniej, jest nadal zaufany.</string>
+    <string name="status_remove_user_done">Usunięto %1$d certyfikatów z magazynu użytkownika.</string>
+    <string name="status_remove_nothing">Nie ma nic do usunięcia: żaden z wczytanych certyfikatów nie znajduje się w tym magazynie.</string>
+    <string name="status_remove_failed">Usuwanie nie zgłosiło powodzenia.</string>
+    <string name="toast_remove_needs_root">Usuwanie wymaga roota. Bez niego usuń certyfikat ręcznie w Ustawienia &gt; Zabezpieczenia &gt; Zaufane poświadczenia.</string>
+
+    <!-- Usuwanie bez roota, oferowane jako jeden z trzech sposobów 3b. Magazynu użytkownika
+         nie da się zapisać bez roota, więc to tylko prowadzi użytkownika przez listę
+         certyfikatów w ustawieniach systemowych i daje przycisk otwierający ten ekran;
+         obrazki dojdą później. -->
+    <string name="dialog_manual_title">Ręczne usuwanie certyfikatu</string>
+    <string name="dialog_manual_message">Bez roota certyfikat w magazynie użytkownika można usunąć tylko w ustawieniach systemowych:\n\n1. Otwórz Ustawienia, potem Zabezpieczenia, potem Zaufane poświadczenia - przycisk poniżej przenosi tam od razu.\n2. Przejdź na kartę UŻYTKOWNIKA.\n3. Dotknij certyfikatu, który chcesz usunąć.\n4. Potwierdź przyciskiem OK lub Usuń.\n\nCertyfikaty zainstalowane przez tę aplikację są wypisane pod nazwą swojego CA (na przykład ISRG Root X1). Brzmienie i kolejność różnią się nieco między wersjami Androida; przed usunięciem może zostać poproszony o blokadę ekranu (PIN, wzór lub hasło).</string>
+    <string name="dialog_manual_open">Otwórz ustawienia</string>
+    <string name="toast_no_settings_screen">Nie udało się otworzyć listy certyfikatów na tym urządzeniu. Otwórz Ustawienia &gt; Zabezpieczenia &gt; Zaufane poświadczenia samodzielnie.</string>
+
+    <!-- Automatyczna wersja tego przewodnika: lista certyfikatów jest otwierana, a usługa
+         automatycznego potwierdzania dotyka wierszy należących do wczytanych certyfikatów.
+         Nigdzie nie potrzeba roota i o to w tym chodzi. -->
+    <string name="dialog_auto_remove_title">Usunąć automatycznie?</string>
+    <string name="dialog_auto_remove_message">Zostanie otwarta lista certyfikatów w ustawieniach systemowych, a usługa automatycznego potwierdzania usunie z niej wczytane tutaj certyfikaty, wiersz po wierszu.\n\nDotyka tylko wierszy, których nazwa odpowiada jednemu z tych certyfikatów, i zatrzymuje się, gdy tylko ten ekran wróci na wierzch. W każdej chwili możesz przejąć ster ręcznie - lista zostaje tam, gdzie jest.</string>
+    <string name="dialog_auto_remove_ok">Usuń</string>
+    <string name="status_auto_remove">Usuwanie %1$d certyfikatów przez ekran ustawień…</string>
+    <string name="status_auto_remove_done">Automatyczne usuwanie zatrzymane. Sprawdź listę, jeśli coś zostało.</string>
+
+    <!-- Usuwanie z magazynu UŻYTKOWNIKA (3b) i wybór, który za nim stoi. Magazyn użytkownika
+         nie ma API do usuwania certyfikatów, więc trzy sposoby różnią się tym, kto usuwa,
+         i tym, czego do tego potrzeba: roota, użytkownika pracującego na liście
+         w ustawieniach albo usługi automatycznego potwierdzania robiącej to samo na tej
+         samej liście. Pierwszy jest wyszarzony na urządzeniu bez roota i mówi o tym jego
+         etykieta "noroot". Wybór jest zapamiętywany, więc okno otwiera się na sposobie
+         użytym ostatnio (patrz UserRemoveMode). -->
+    <string name="dialog_user_remove_title">Usuwanie z magazynu UŻYTKOWNIKA</string>
+    <string name="dialog_user_remove_message">Magazyn użytkownika nie ma API do usuwania certyfikatów, więc o tym, co z niego zniknie, decyduje to, kto usuwa. Wybierz sposób, na jaki pozwala to urządzenie:</string>
+    <string name="remove_mode_root">Usuń pliki z użyciem roota</string>
+    <string name="remove_mode_root_noroot">Usuń pliki z użyciem roota (to urządzenie go nie ma)</string>
+    <string name="remove_mode_root_note">Pliki w /data/misc/user/0/cacerts-added (starsze wersje: /data/misc/keychain/cacerts-added) są usuwane bezpośrednio. Plik znika tylko wtedy, gdy jego zawartość to jeden z wczytanych tutaj certyfikatów. Wymaga roota.</string>
+    <string name="remove_mode_manual">Usuń ręcznie w ustawieniach</string>
+    <string name="remove_mode_manual_note">Otwiera się lista certyfikatów w ustawieniach systemowych, a każdy certyfikat usuwasz sam: dotknij jego wiersza, naciśnij Usuń, potwierdź. Aplikacja niczego nie usuwa, a ten sposób nie wymaga roota.</string>
+    <string name="remove_mode_auto">Usuń automatycznie (usługa ułatwień dostępu)</string>
+    <string name="remove_mode_auto_note">Otwiera się ta sama lista, ale to usługa automatycznego potwierdzania dotyka wierszy tych certyfikatów i potwierdza to, co po nich następuje, więc przebieg nie wymaga uwagi. Najpierw trzeba ją włączyć w systemowych ustawieniach ułatwień dostępu; wymaga Androida 4.1 lub nowszego.</string>
+    <string name="dialog_user_remove_ok">Kontynuuj</string>
+    <!-- Instalacja w magazynie UŻYTKOWNIKA (2b) i wybór, który za nią stoi. Certyfikaty
+         zawsze przechodzą przez instalator certyfikatów Androida; trzy tryby różnią się
+         tylko liczbą pytań i tym, kto na nie odpowiada - nazywają to etykiety, a opis pod
+         nimi rozwija. Wybór jest zapamiętywany, więc okno otwiera się na trybie używonym
+         ostatnio (patrz UserInstallMode). -->
+    <string name="dialog_user_install_title">Instalacja w magazynie UŻYTKOWNIKA</string>
+    <string name="dialog_user_install_message">Certyfikaty są instalowane przez systemowy instalator certyfikatów Androida, który prosi o potwierdzenie. Wybierz, jak mają przebiegać te komunikaty:</string>
+    <string name="install_mode_bundle">Jedno pytanie o cały zestaw</string>
+    <string name="install_mode_bundle_note">Wszystkie certyfikaty trafiają do instalatora naraz. Część kompilacji Androida 4.x odczytuje ten pakiet i go ignoruje; aplikacja pyta wtedy o każdy certyfikat po kolei. Komunikaty potwierdzasz samodzielnie.</string>
+    <string name="install_mode_single">Jedno pytanie na certyfikat</string>
+    <string name="install_mode_single_note">Każdy certyfikat dostaje własne okno, a potwierdzenie jednego otwiera następne. Wolniej niż pierwsza opcja, ale działa tak samo w każdym instalatorze. Komunikaty potwierdzasz samodzielnie.</string>
+    <string name="install_mode_auto">Potwierdzaj komunikaty automatycznie</string>
+    <string name="install_mode_auto_note">Usługa automatycznego potwierdzania dotyka OK w każdym oknie, więc przebieg nie wymaga uwagi. Najpierw trzeba ją włączyć w ustawieniach ułatwień dostępu; wymaga Androida 4.1 lub nowszego.</string>
+    <string name="dialog_user_install_ok">Instaluj</string>
+
+    <!-- Usługa automatycznego potwierdzania: okno wyjaśniające ją przed stroną ustawień, na
+         której się ją włącza, okno pokazywane, gdy jest włączona, oraz wiersz stanu
+         instalacji, którą obsługuje. Pozycji do znalezienia na liście ustawień trzeba szukać
+         po accessibility_service_label, którą to wyjaśnienie cytuje. -->
+    <string name="dialog_auto_confirm_title">Usługa automatycznego potwierdzania</string>
+    <string name="dialog_auto_confirm_message">zhusheng może potwierdzać za Ciebie komunikaty instalatora certyfikatów, ale nie wolno mu włączyć własnej usługi ułatwień dostępu - możesz to zrobić tylko Ty, w systemowych ustawieniach ułatwień dostępu.\n\nGdy trwa instalacja lub usuwanie rozpoczęte przez tę aplikację, usługa dotyka przycisku OK w oknach instalatora, a przy usuwaniu - wierszy listy certyfikatów w ustawieniach. Poza takim przebiegiem nie robi nic i nigdy nie dotyka okna otwartego przez inną aplikację.\n\nPozycja do włączenia nazywa się „%1$s”.</string>
+    <string name="dialog_auto_confirm_flash_warning">Ostrzeżenie: usługa działa, szybko przechodząc przez kolejne ekrany, więc podczas jej pracy ekran może wielokrotnie mrugać. Jeśli migające światło jest dla Ciebie problemem (padaczka fotogenna), wybierz jeden ze sposobów potwierdzania ręcznego - żaden z nich nie potrzebuje usługi.</string>
+    <string name="dialog_auto_confirm_on_message">Usługa automatycznego potwierdzania jest włączona. Potwierdza komunikaty instalatora certyfikatów i przechodzi listę certyfikatów w ustawieniach, gdy ta aplikacja usuwa certyfikaty z magazynu użytkownika.\n\nWyłącz ją w systemowych ustawieniach ułatwień dostępu, jeśli wolisz potwierdzać wszystko samodzielnie.</string>
+    <string name="dialog_auto_confirm_open">Otwórz ułatwienia dostępu</string>
+    <string name="toast_auto_confirm_still_off">Usługa automatycznego potwierdzania jest nadal wyłączona, więc nic nie zostało uruchomione.</string>
+    <string name="status_installing_user">Instalowanie %1$d certyfikatów w magazynie UŻYTKOWNIKA. Potwierdź każdy komunikat Androida.</string>
+    <string name="status_installing_user_auto">Instalowanie %1$d certyfikatów w magazynie UŻYTKOWNIKA. Komunikaty potwierdza usługa.</string>
+    <string name="status_user_done">Instalacja w magazynie UŻYTKOWNIKA zakończona. W Androidzie &lt; 7.0 te certyfikaty są teraz zaufane w całym systemie.</string>
+    <string name="dialog_system_trusted_title">Już zaufany na poziomie systemu</string>
+    <string name="dialog_system_trusted_message">Android przechowuje certyfikat tylko w jednym magazynie. Te certyfikaty znajdują się już w magazynie SYSTEM tego urządzenia, więc instalator certyfikatów zgłasza powodzenie i nie dodaje niczego do magazynu UŻYTKOWNIKA:\n\n%1$s\n\nNic nie jest zepsute i nic nie zostało utracone - są już zaufane w każdej aplikacji. Aby zobaczyć je w magazynie UŻYTKOWNIKA, usuń je najpierw z magazynu SYSTEM (3a) i zainstaluj ponownie (2b).</string>
+    <string name="status_user_nothing_system_trusted">Nie ma nic do zainstalowania: %1$d certyfikatów jest już zaufanych na poziomie systemu, a Android nie tworzy drugiej kopii w magazynie UŻYTKOWNIKA.</string>
+    <string name="status_user_done_system_trusted">Instalacja w magazynie UŻYTKOWNIKA zakończona. Pominięto %1$d certyfikatów, ponieważ są już zaufane na poziomie systemu, a Android nie kopiuje ich do magazynu UŻYTKOWNIKA.</string>
+    <string name="toast_rebooting">Ponowne uruchamianie…</string>
+
+    <!-- Źródła certyfikatów z CertCatalog: nazwa dostawcy w pierwszym wierszu pozycji oraz notatka pod adresem URL. -->
+    <string name="src_mozilla_name">Mozilla CA Bundle (wszystkie główne CA)</string>
+    <string name="src_goog_bundle_name">Google Trust Services (pakiet)</string>
+    <string name="src_isrg_x1_name">Let\'s Encrypt - ISRG Root X1</string>
+    <string name="src_isrg_x2_name">Let\'s Encrypt - ISRG Root X2</string>
+    <string name="src_gts_r1_name">Google - GTS Root R1</string>
+    <string name="src_gts_r2_name">Google - GTS Root R2</string>
+    <string name="src_gts_r3_name">Google - GTS Root R3</string>
+    <string name="src_gts_r4_name">Google - GTS Root R4</string>
+    <string name="src_amazon_r1_name">Amazon Root CA 1</string>
+    <string name="src_amazon_r2_name">Amazon Root CA 2</string>
+    <string name="src_amazon_r3_name">Amazon Root CA 3</string>
+    <string name="src_amazon_r4_name">Amazon Root CA 4</string>
+    <string name="src_digicert_global_name">DigiCert Global Root CA</string>
+    <string name="src_digicert_g2_name">DigiCert Global Root G2</string>
+    <string name="src_digicert_g3_name">DigiCert Global Root G3</string>
+    <string name="src_digicert_g4_name">DigiCert Trusted Root G4</string>
+    <string name="src_digicert_ev_name">DigiCert High Assurance EV Root CA</string>
+    <string name="src_globalsign_r1_name">GlobalSign Root CA (R1)</string>
+    <string name="src_globalsign_r3_name">GlobalSign Root CA - R3</string>
+    <string name="src_globalsign_r6_name">GlobalSign Root CA - R6</string>
+    <string name="src_usertrust_rsa_name">Sectigo - USERTrust RSA Certification Authority</string>
+    <string name="src_comodo_rsa_name">Sectigo - COMODO RSA Certification Authority</string>
+    <string name="src_comodo_ecc_name">Sectigo - COMODO ECC Certification Authority</string>
+    <string name="src_entrust_g2_name">Entrust Root Certification Authority - G2</string>
+    <string name="src_godaddy_g2_name">Go Daddy Root Certificate Authority - G2</string>
+    <string name="src_ms_rsa_2017_name">Microsoft RSA Root Certificate Authority 2017</string>
+    <string name="src_ms_ecc_2017_name">Microsoft ECC Root Certificate Authority 2017</string>
+    <string name="src_mozilla_note">Kompletny pakiet zaufania Mozilla NSS. Jedno pobranie pokrywa wszystkie główne CA.</string>
+    <string name="src_goog_bundle_note">Wszystkie obecne korzenie Google Trust Services (GTS Root R1-R4 i inne).</string>
+    <string name="src_isrg_x1_note">Podpisuje zdecydowaną większość certyfikatów Let\'s Encrypt (RSA).</string>
+    <string name="src_isrg_x2_note">Korzeń ECDSA używany przez nowsze certyfikaty Let\'s Encrypt.</string>
+    <string name="src_gts_r1_note">Korzeń Google Trust Services R1 (RSA 4096).</string>
+    <string name="src_gts_r2_note">Korzeń Google Trust Services R2 (RSA 4096).</string>
+    <string name="src_gts_r3_note">Korzeń Google Trust Services R3 (ECDSA P-384).</string>
+    <string name="src_gts_r4_note">Korzeń Google Trust Services R4 (ECDSA P-384).</string>
+    <string name="src_amazon_r1_note">Korzeń Amazon Trust Services CA 1 (RSA 2048).</string>
+    <string name="src_amazon_r2_note">Korzeń Amazon Trust Services CA 2 (RSA 4096).</string>
+    <string name="src_amazon_r3_note">Korzeń Amazon Trust Services CA 3 (ECDSA P-256).</string>
+    <string name="src_amazon_r4_note">Korzeń Amazon Trust Services CA 4 (ECDSA P-384).</string>
+    <string name="src_digicert_global_note">Starszy (legacy) globalny korzeń DigiCert.</string>
+    <string name="src_digicert_g2_note">Nowszy globalny korzeń DigiCert G2.</string>
+    <string name="src_digicert_g3_note">Globalny korzeń DigiCert G3 (ECDSA P-384).</string>
+    <string name="src_digicert_g4_note">Zaufany korzeń DigiCert G4.</string>
+    <string name="src_digicert_ev_note">Korzeń DigiCert o wysokiej pewności (EV).</string>
+    <string name="src_globalsign_r1_note">Pierwotny korzeń GlobalSign.</string>
+    <string name="src_globalsign_r3_note">Korzeń GlobalSign R3 (RSA 2048).</string>
+    <string name="src_globalsign_r6_note">Korzeń GlobalSign R6 (RSA 4096).</string>
+    <string name="src_usertrust_rsa_note">Korzeń USERTrust RSA (Sectigo, dawniej Comodo).</string>
+    <string name="src_comodo_rsa_note">Korzeń COMODO RSA.</string>
+    <string name="src_comodo_ecc_note">Korzeń COMODO ECC.</string>
+    <string name="src_entrust_g2_note">Korzeń Entrust G2 (RSA 2048).</string>
+    <string name="src_godaddy_g2_note">Korzeń GoDaddy G2 (RSA 2048).</string>
+    <string name="src_ms_rsa_2017_note">Korzeń Microsoft RSA 2017.</string>
+    <string name="src_ms_ecc_2017_note">Korzeń Microsoft ECC 2017.</string>
+</resources>

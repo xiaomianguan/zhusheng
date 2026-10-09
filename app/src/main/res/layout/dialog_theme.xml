@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_message"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            style="@style/ThemeSectionLabel"
+            android:text="@string/theme_section_theme" />
+
+        <RadioGroup
+            android:id="@+id/theme_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/theme_option_holo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_holo" />
+
+            <RadioButton
+                android:id="@+id/theme_option_material"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_material" />
+
+            <!--
+              Shown only on Android 4.x, where Material is grayed out above. It is
+              hidden on Android 5.0+ by MainActivity#showThemeChooser().
+            -->
+            <TextView
+                android:id="@+id/theme_material_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="32dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="@string/theme_material_unavailable"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/theme_option_device_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_device_default" />
+
+        </RadioGroup>
+        <TextView
+            style="@style/ThemeSectionLabel"
+            android:text="@string/theme_section_scheme" />
+
+        <RadioGroup
+            android:id="@+id/theme_scheme_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/theme_scheme_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_scheme_light" />
+
+            <RadioButton
+                android:id="@+id/theme_scheme_dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_scheme_dark" />
+
+        </RadioGroup>
+
+        <!-- Colors of the Holo theme: a single accent color. -->
+        <LinearLayout
+            android:id="@+id/theme_colors_holo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ThemeSectionLabel"
+                android:text="@string/theme_color_accent" />
+
+            <RadioGroup
+                android:id="@+id/theme_holo_colors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/theme_holo_caption"
+                style="@style/ThemeColorCaption" />
+
+        </LinearLayout>
+
+
+        <!-- Colors of the Material theme: a primary and an accent color. -->
+        <LinearLayout
+            android:id="@+id/theme_colors_material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ThemeSectionLabel"
+                android:text="@string/theme_color_primary" />
+
+            <RadioGroup
+                android:id="@+id/theme_material_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/theme_material_primary_caption"
+                style="@style/ThemeColorCaption" />
+
+            <TextView
+                style="@style/ThemeSectionLabel"
+                android:text="@string/theme_color_accent" />
+
+            <RadioGroup
+                android:id="@+id/theme_material_accent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/theme_material_accent_caption"
+                style="@style/ThemeColorCaption" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/theme_device_default_note"
+            style="@style/ThemeNote"
+            android:text="@string/theme_colors_device_default"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+</ScrollView>
+

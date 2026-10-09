@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The main screen is a single scrolling page: a column of views of which the flexible one is
+  the list of sources. PageScrollView gives the list the room left over on the page, or the
+  minimum the list asks for when there is less than that, and lets the page scroll only by
+  that little; the class describes both cases. The list is a PageListView, which reports the
+  height of its rows rather than the single row the framework measures a list to inside a
+  scrolling page, and works out its own minimum from how tall a row turns out to be.
+
+  The progress bar and the status line - the two views that say what a run is doing - sit
+  between the list and the buttons, so what the app is reporting is next to the buttons that
+  started it rather than below every one of them.
+
+  The page keeps its padding only on the left and the right, and the column inside carries the
+  vertical spacing instead. A ScrollView clamps its scroll to the height of its content less
+  its own padding, so a vertical padding on the page is room the content never scrolls into:
+  once the page is scrolled the padding stands still at the top and at the bottom of the
+  scrollable area as a band of plain background, with the content sliding behind it, which
+  reads as the page stopping short at both ends. In the column the same spacing is part of the
+  content: it is above the header and below the last button where it belongs, and it scrolls
+  away instead of staying behind.
+-->
+<cc.wuersan008.zhusheng.PageScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/zsBackground"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="14dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_title"
+            android:textColor="?attr/zsTextPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/header_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_subtitle"
+            android:textColor="?attr/zsTextSecondary"
+            android:textSize="12sp" />
+
+        <!-- The color of this line is applied by AppColors, not by the layout: it is
+             the accent the user chose, or the one the theme itself uses when nothing
+             was chosen, so it always matches the rest of the theme. -->
+        <TextView
+            android:id="@+id/device_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp" />
+
+        <!-- A PageListView, not a plain ListView: inside a scrolling page the framework
+             measures a plain list as one row tall. The minimum height is a floor under
+             the one the list works out for itself - two of its rows, however tall
+             they turn out to be - and it is what the page checks before it decides to
+             scroll rather than squeeze the list below it.
+
+             The list is the view that scrolls, so its scrollbar is kept on screen
+             instead of fading out once a drag is over: a row that happens to end exactly
+             at the bottom edge of the list is then not the only sign that there are more
+             sources below it. The scrollbar of the page itself is left alone, since the
+             page is the one that scrolls only by a little. -->
+        <cc.wuersan008.zhusheng.PageListView
+            android:id="@+id/list_sources"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:minHeight="160dp"
+            android:divider="?attr/zsDivider"
+            android:dividerHeight="1px"
+            android:fadeScrollbars="false"
+            android:cacheColorHint="@android:color/transparent" />
+
+        <!-- What a run is doing has to be readable while the buttons that started it are on
+             screen: below all of them the status line is one the user has to scroll to, and
+             on a short display it is off screen altogether. The list is the view that gives
+             way when the page is too short, so these two stay between it and the buttons. -->
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:max="100"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/status_idle"
+            android:textColor="?attr/zsTextSecondary"
+            android:textSize="12sp" />
+
+        <!-- The three buttons share the row evenly. Baseline alignment is off and each
+             button reserves two lines, so a translation whose labels wrap differently
+             ("Zalecane" beside "Zaznacz wszystko" / "Odznacz wszystko") still gets
+             three buttons of one height instead of a raised middle one. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_select_all"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minLines="2"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:text="@string/btn_select_all" />
+
+            <Button
+                android:id="@+id/btn_select_recommended"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minLines="2"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:text="@string/btn_select_recommended" />
+
+            <Button
+                android:id="@+id/btn_select_none"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minLines="2"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:text="@string/btn_select_none" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_download" />
+
+        <Button
+            android:id="@+id/btn_install_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_install_system" />
+
+        <Button
+            android:id="@+id/btn_install_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_install_user" />
+
+        <Button
+            android:id="@+id/btn_remove_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_remove_system" />
+
+        <Button
+            android:id="@+id/btn_remove_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_remove_user" />
+
+        <Button
+            android:id="@+id/btn_reboot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/btn_reboot" />
+
+        </LinearLayout>
+
+</cc.wuersan008.zhusheng.PageScrollView>

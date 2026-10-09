@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Colors of the app's own surfaces.
+
+      They are declared as theme attributes rather than plain color resources so
+      that the light and the dark color scheme can pick different values, and so
+      that the content area keeps a predictable look even on ROMs that re-skin the
+      device-default theme.
+
+      Every theme in res/values/styles.xml sets them to the light values, and
+      ThemeOverlay.Zhusheng.Scheme.Dark overrides them with the dark values when
+      the dark color scheme is selected (applied with Theme.applyStyle()).
+    -->
+
+    <attr name="zsBackground" format="color" />
+    <attr name="zsTextPrimary" format="color" />
+    <attr name="zsTextSecondary" format="color" />
+    <attr name="zsDivider" format="color" />
+
+</resources>

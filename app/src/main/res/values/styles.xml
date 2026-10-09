@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      The selectable app themes.
+
+      Each theme comes in two color schemes:
+
+        * "Light" (the default) uses the DarkActionBar variant - a light content
+          area with a dark action bar - which is the original look of the app.
+        * "Dark" uses the fully dark variant of the same theme.
+
+      This (base) folder holds the definitions used on API 14 - 20. The Material
+      theme is overridden in values-v21 with the real framework Material theme,
+      which only exists from Android 5.0 (API 21) onward.
+
+      Every theme also sets the colors of the app's own surfaces (see
+      res/values/attrs.xml); the dark color scheme overrides them again through
+      ThemeOverlay.Zhusheng.Scheme.Dark below.
+    -->
+
+    <!-- Holo: the original theme, available since API 11. -->
+    <style name="Theme.Zhusheng.Holo" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <style name="Theme.Zhusheng.Holo.Dark" parent="@android:style/Theme.Holo">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <!-- Material: on Android 5.0+ this resolves to Theme.Material (values-v21).
+         Material does not exist before API 21, so on Android 4.x it falls back
+         to Holo, which is the closest look available. -->
+    <style name="Theme.Zhusheng.Material" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <style name="Theme.Zhusheng.Material.Dark" parent="@android:style/Theme.Holo">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <!-- Device default: uses whatever theme the device manufacturer ships
+         (TouchWiz, Sense, MIUI, ...). Available since API 14. -->
+    <style name="Theme.Zhusheng.DeviceDefault" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <style name="Theme.Zhusheng.DeviceDefault.Dark" parent="@android:style/Theme.DeviceDefault">
+        <item name="zsBackground">@color/zs_light_background</item>
+        <item name="zsTextPrimary">@color/zs_light_text</item>
+        <item name="zsTextSecondary">@color/zs_light_text_dim</item>
+        <item name="zsDivider">@color/zs_light_divider</item>
+    </style>
+
+    <!--
+      The dark color scheme. It carries no parent, so it only overrides the four
+      content colors, and it is layered on top of the selected theme with
+      Theme.applyStyle() before the content view is created.
+    -->
+    <style name="ThemeOverlay.Zhusheng.Scheme.Dark" parent="">
+        <item name="zsBackground">@color/zs_dark_background</item>
+        <item name="zsTextPrimary">@color/zs_dark_text</item>
+        <item name="zsTextSecondary">@color/zs_dark_text_dim</item>
+        <item name="zsDivider">@color/zs_dark_divider</item>
+    </style>
+
+    <!-- Styling of the theme picker (res/layout/dialog_theme.xml). -->
+    <style name="ThemeSectionLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Names the swatch above it, so it sits close: the gap under the swatch rows
+         is dropped on the last row (see MainActivity#fillSwatches), leaving only
+         this margin between the color and its name. -->
+    <style name="ThemeColorCaption">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- A line of explanation under the control it belongs to: the note about the
+         device-default theme in the theme picker, and the caption that names the
+         selected mode in the USER store install chooser. -->
+    <style name="ThemeNote">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

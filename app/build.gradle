@@ -1,0 +1,56 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+apply plugin: 'com.android.application'
+
+// The moment this build was configured, shown in the About dialog so a bug report can
+// name the build. Computed while the project is configured, which is why it names the
+// build rather than the install.
+def buildDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern('yyyy-MM-dd HH:mm'))
+
+android {
+    namespace 'cc.wuersan008.zhusheng'
+    compileSdk 33
+    buildToolsVersion "34.0.0"
+
+    defaultConfig {
+        applicationId "cc.wuersan008.zhusheng"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        // Stamped by the build, read back by the About dialog.
+        buildConfigField "String", "BUILD_DATE", "\"${buildDate}\""
+    }
+
+    buildFeatures {
+        // The About dialog reads the version, the build date and the build type out of
+        // BuildConfig, which AGP no longer generates by default.
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        // The app intentionally targets ancient APIs; do not fail the build on
+        // informational lint findings.
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+// No dependencies: the app relies solely on the Android framework so that it can
+// run on every architecture and every Android version from 4.0 (API 14) to 6.0 (API 23).
+dependencies {
+}

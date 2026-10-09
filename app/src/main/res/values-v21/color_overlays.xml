@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      The colors offered by the Material theme's two pickers.
+
+      Each of these is layered on top of the Material theme with
+      Theme.applyStyle() (see AppColors.applyTheme) instead of replacing it, so
+      everything the app does not name here - the dialogs, the widgets, the text
+      colors - keeps following the framework Material theme.
+
+      The styles deliberately carry no parent: an overlay must add only the
+      attributes listed below.
+
+      android:colorPrimary / colorPrimaryDark color the action bar and the status
+      bar; android:colorAccent / colorControlActivated color the check boxes, the
+      progress bar, the dialog buttons and the text selection handles.
+    -->
+
+    <!-- ============================================================= primary -->
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Red" parent="">
+        <item name="android:colorPrimary">@color/mat_red</item>
+        <item name="android:colorPrimaryDark">@color/mat_red_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Pink" parent="">
+        <item name="android:colorPrimary">@color/mat_pink</item>
+        <item name="android:colorPrimaryDark">@color/mat_pink_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Purple" parent="">
+        <item name="android:colorPrimary">@color/mat_purple</item>
+        <item name="android:colorPrimaryDark">@color/mat_purple_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Indigo" parent="">
+        <item name="android:colorPrimary">@color/mat_indigo</item>
+        <item name="android:colorPrimaryDark">@color/mat_indigo_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Blue" parent="">
+        <item name="android:colorPrimary">@color/mat_blue</item>
+        <item name="android:colorPrimaryDark">@color/mat_blue_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Teal" parent="">
+        <item name="android:colorPrimary">@color/mat_teal</item>
+        <item name="android:colorPrimaryDark">@color/mat_teal_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Green" parent="">
+        <item name="android:colorPrimary">@color/mat_green</item>
+        <item name="android:colorPrimaryDark">@color/mat_green_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Orange" parent="">
+        <item name="android:colorPrimary">@color/mat_orange</item>
+        <item name="android:colorPrimaryDark">@color/mat_orange_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.Brown" parent="">
+        <item name="android:colorPrimary">@color/mat_brown</item>
+        <item name="android:colorPrimaryDark">@color/mat_brown_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Primary.BlueGrey" parent="">
+        <item name="android:colorPrimary">@color/mat_blue_grey</item>
+        <item name="android:colorPrimaryDark">@color/mat_blue_grey_dark</item>
+    </style>
+
+    <!-- ============================================================== accent -->
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Red" parent="">
+        <item name="android:colorAccent">@color/mat_red</item>
+        <item name="android:colorControlActivated">@color/mat_red</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Pink" parent="">
+        <item name="android:colorAccent">@color/mat_pink</item>
+        <item name="android:colorControlActivated">@color/mat_pink</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Purple" parent="">
+        <item name="android:colorAccent">@color/mat_purple</item>
+        <item name="android:colorControlActivated">@color/mat_purple</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Indigo" parent="">
+        <item name="android:colorAccent">@color/mat_indigo</item>
+        <item name="android:colorControlActivated">@color/mat_indigo</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Blue" parent="">
+        <item name="android:colorAccent">@color/mat_blue</item>
+        <item name="android:colorControlActivated">@color/mat_blue</item>
+    </style>
+
+    <!-- The black / white accent: black here, white in the dark scheme below. -->
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Black" parent="">
+        <item name="android:colorAccent">@color/mat_black</item>
+        <item name="android:colorControlActivated">@color/mat_black</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Green" parent="">
+        <item name="android:colorAccent">@color/mat_green</item>
+        <item name="android:colorControlActivated">@color/mat_green</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Orange" parent="">
+        <item name="android:colorAccent">@color/mat_orange</item>
+        <item name="android:colorControlActivated">@color/mat_orange</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Brown" parent="">
+        <item name="android:colorAccent">@color/mat_brown</item>
+        <item name="android:colorControlActivated">@color/mat_brown</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.BlueGrey" parent="">
+        <item name="android:colorAccent">@color/mat_blue_grey</item>
+        <item name="android:colorControlActivated">@color/mat_blue_grey</item>
+    </style>
+
+    <!-- ================================================= accent, dark scheme -->
+
+    <!--
+      The same accents for the dark color scheme, in the 200 tints - the very step
+      Material itself takes with its own accent (deep teal 500 in a light theme,
+      deep teal 200 in a dark one, see AppColors.defaultAccent). A 500 accent is hard
+      to read against dark surfaces, which is what the tint is there for.
+    -->
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Red.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_red_200</item>
+        <item name="android:colorControlActivated">@color/mat_red_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Pink.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_pink_200</item>
+        <item name="android:colorControlActivated">@color/mat_pink_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Purple.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_purple_200</item>
+        <item name="android:colorControlActivated">@color/mat_purple_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Indigo.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_indigo_200</item>
+        <item name="android:colorControlActivated">@color/mat_indigo_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Blue.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_blue_200</item>
+        <item name="android:colorControlActivated">@color/mat_blue_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.White.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_white</item>
+        <item name="android:colorControlActivated">@color/mat_white</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Green.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_green_200</item>
+        <item name="android:colorControlActivated">@color/mat_green_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Orange.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_orange_200</item>
+        <item name="android:colorControlActivated">@color/mat_orange_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.Brown.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_brown_200</item>
+        <item name="android:colorControlActivated">@color/mat_brown_200</item>
+    </style>
+
+    <style name="ThemeOverlay.Zhusheng.Material.Accent.BlueGrey.Dark" parent="">
+        <item name="android:colorAccent">@color/mat_blue_grey_200</item>
+        <item name="android:colorControlActivated">@color/mat_blue_grey_200</item>
+    </style>
+
+</resources>
