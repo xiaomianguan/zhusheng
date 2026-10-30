@@ -65,10 +65,15 @@ public final class CertCatalog {
         // an older snapshot silently loses whatever Mozilla added since, and those roots
         // then have no other way in. KnownRoots.MOZILLA is generated from the live
         // bundle, so when it is refreshed this pin has to be refreshed with it.
+        //
+        // The snapshot below is the first one taken after Mozilla removed the three
+        // eMudhra roots (see KnownRoots.MOZILLA); an earlier one would hand a device
+        // roots that are no longer trusted, which the fingerprint check would then
+        // silently drop.
         list.add(bundle(context,
                 R.string.src_mozilla_name,
                 "https://curl.se/ca/cacert.pem",
-                archived("20261001155516", "https://curl.se/ca/cacert.pem"),
+                archived("20261020190321", "https://curl.se/ca/cacert.pem"),
                 R.string.src_mozilla_note,
                 true,
                 KnownRoots.MOZILLA));

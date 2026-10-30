@@ -89,7 +89,9 @@ public final class Downloader {
             conn.setConnectTimeout(20000);
             conn.setReadTimeout(40000);
             conn.setInstanceFollowRedirects(true);
-            conn.setRequestProperty("User-Agent", "zhusheng/1.0 (Android; root certificate installer)");
+            conn.setRequestProperty("User-Agent",
+                    "zhusheng/" + BuildConfig.VERSION_NAME
+                            + " (Android; root certificate installer)");
             conn.setRequestProperty("Accept", "*/*");
 
             if (trustAll && conn instanceof HttpsURLConnection) {

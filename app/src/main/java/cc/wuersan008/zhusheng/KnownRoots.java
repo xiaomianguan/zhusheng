@@ -14,7 +14,7 @@ import java.util.Set;
  * dropped. A root the bundle gains after this list was taken is not installed until
  * the app is rebuilt; a root it no longer holds is simply not offered.</p>
  *
- * <p>The fingerprints are the ones the bundles served on 2025-10-07, read with
+ * <p>The fingerprints are the ones the bundles served on 2026-10-30, read with
  * {@code openssl x509 -outform DER | sha256sum}.</p>
  */
 final class KnownRoots {
@@ -22,14 +22,24 @@ final class KnownRoots {
     private KnownRoots() {
     }
 
-    /** The roots of the Mozilla bundle, {@code https://curl.se/ca/cacert.pem}. */
+    /**
+     * The roots of the Mozilla bundle, {@code https://curl.se/ca/cacert.pem}.
+     *
+     * <p>The three eMudhra roots Mozilla removed from NSS in October 2026 are
+     * deliberately absent: emSign Root CA - C1, emSign ECC Root CA - C3 and emSign ECC
+     * Root CA - G3. Eight intermediate CAs under the emSign hierarchy had been generated
+     * with insufficient entropy, so certificates could be forged for them; Mozilla
+     * blocked the intermediates through OneCRL and removed the roots themselves in bugs
+     * 2083709 and 2084101, and Chrome dropped emSign ECC Root CA - G3 from its root
+     * store. A bundle fetched from an older snapshot still carries those roots, and
+     * leaving them out of this set is what stops the app from installing them.</p>
+     */
     static final Set<String> MOZILLA = hashes(new String[]{
             "018e13f0772532cf809bd1b17281867283fc48c6e13be9c69812854a490c1b05",
             "0552e6f83fdf65e8fa9670e666df28a4e21340b510cbe52566f97c4fb94b2bd1",
             "06c08d7dafd876971eb1124fe67f847ec0c7a158d3ea53cbe940e2ea9791f4c3",
             "08170d1aa36453901a2f959245e347db0c8d37abaabc56b81aa100dc958970db",
             "098e08a91dbbf77478b96cceb89b1413a5da37b7c862606a955deb07179f4326",
-            "125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f",
             "1435f225c5d252d7a21948cc3ce62aecfa88001e3dd72d1cc3555100eb372f93",
             "1793927a0614549789adce2f8f34f7f0b66d0f3ae3a3b84d21ec15dbba4fadc7",
             "179fbc148a3dd00fd24ea13458cc43bfa7f59c8182d783a513f6ebec100c8924",
@@ -89,7 +99,6 @@ final class KnownRoots {
             "81a9088ea59fb364c548a6f85559099b6f0405efbf18e5324ec9f457ba00112f",
             "8560f91c3624daba9570b5fea0dbe36ff11a8323be9486854fb3f34a5571198d",
             "85666a562ee0be5ce925c1d8890a6f76a87ec16d4d7d5f29ea7419cf20123b69",
-            "86a1ecba089c4a8d3bbe2734c612ba341d813e043cf9e8a862cd5c57a36bbe6b",
             "88ef81de202eb018452e43f864725cea5fbd1fc2d9d205730709c5d8b8690f46",
             "88f438dcf8ffd1fa8f429115ffe5f82ae1e06e0c70c375faad717b34a49e7265",
             "8a71de6559336f426c26e53880d00d88a18da4c6a91f0dcb6194e206c5c96387",
@@ -111,7 +120,6 @@ final class KnownRoots {
             "b4585f22e4ac756a4e8612a1361c5d9d031a93fd84febb778fa3068b0fc42dc2",
             "b49141502d00663d740f2e7ec340c52800962666121a36d09cf7dd2b90384fb4",
             "b676f2eddae8775cd36cb0f63cd1d4603961f49e6265ba013a2f0307b6d0b804",
-            "bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3",
             "be4b56cb5056c0136a526df444508daa36a0b54f42e4ac38f72af470e479654c",
             "beb00b30839b9bc32c32e4447905950641f26421b15ed089198b518ae2ea1b99",
             "bfd88fe1101c41ae3e801bf8be56350ee9bad1a6b9bd515edc5c6d5b8711ac44",
